@@ -15,8 +15,6 @@
     --beige: #EDE5DF;
 }
 
-/* CONFIGURACIÓN GENERAL */
-
 * {
     margin: 0;
     padding: 0;
@@ -38,12 +36,110 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
-/* CONTENEDORES */
-
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: min(90%, 900px);
     margin: auto;
 }
 
-/* EN CONSTRUCCIÓN */
+/* PRESENTACIÓN */
+.presentacion-duena {
+    padding: 28px 0 12px;
+    text-align: center;
+}
+
+.foto-duena {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* SERVICIOS */
+.servicios-unas {
+    padding: 58px 0 72px;
+    background: linear-gradient(180deg, var(--fondo) 0%, var(--rosa-suave) 100%);
+}
+
+.encabezado-servicios {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--rosa-profundo);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+}
+
+.encabezado-servicios h1 {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    text-transform: uppercase;
+    letter-spacing: 0.045em;
+}
+
+.encabezado-servicios p {
+    margin-top: 10px;
+    color: var(--gris);
+    font-size: 0.92rem;
+}
+
+.lista-servicios {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(185, 144, 142, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 12px 35px rgba(76, 49, 46, 0.05);
+}
+
+.servicio-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 2px;
+    border-bottom: 1px solid var(--beige);
+    font-size: 0.94rem;
+}
+
+.servicio-item:last-child {
+    border-bottom: 0;
+}
+
+.servicio-item > span:first-child {
+    color: var(--negro);
+}
+
+.precio {
+    flex-shrink: 0;
+    color: var(--rosa-profundo);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .presentacion-duena {
+        padding-top: 18px;
+    }
+
+    .servicios-unas {
+        padding: 44px 0 56px;
+    }
+
+    .lista-servicios {
+        padding: 5px 16px;
+    }
+
+    .servicio-item {
+        gap: 10px;
+        padding: 16px 0;
+        font-size: 0.86rem;
+    }
+}
