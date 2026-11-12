@@ -54,10 +54,9 @@ button { font: inherit; }
 .photo-stamp { position: absolute; z-index: 2; right: -2px; top: 35px; width: 82px; height: 82px; display: grid; place-content: center; border-radius: 50%; background: var(--pink); color: var(--rose-dark); text-align: center; font: 600 .7rem/1.45 'DM Sans',sans-serif; letter-spacing: .1em; transform: rotate(9deg); }
 .photo-caption { position: absolute; z-index: 2; bottom: 0; left: 15px; padding: 12px 16px; background: var(--black); color: var(--ivory); font: italic .82rem 'DM Sans',sans-serif; }
 .hero-watermark { position: absolute; right: 1%; bottom: -100px; color: rgba(185,133,145,.055); font: 500 25rem 'DM Sans',sans-serif; pointer-events: none; }
-.intro-strip { min-height: 120px; padding: 28px 8%; display: flex; align-items: center; justify-content: center; gap: clamp(18px,4vw,55px); background: var(--pink); text-align: center; }
-.intro-strip > span:first-child { color: var(--rose-dark); font-size: .63rem; font-weight: 700; letter-spacing: .2em; white-space: nowrap; }
-.intro-strip p { max-width: 470px; color: #51484a; font: italic 1.15rem/1.5 'DM Sans',sans-serif; }
-.intro-star { color: var(--rose-dark); font-size: 1.8rem; }
+.intro-strip { min-height: 120px; padding: 32px 8%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 13px; background: var(--pink); text-align: center; }
+.intro-strip > span:first-child { color: var(--rose-dark); font-family: 'DM Sans',sans-serif; font-size: .63rem; font-weight: 700; letter-spacing: .2em; white-space: nowrap; }
+.intro-strip p { max-width: 520px; color: #30282a; font-family: 'DM Sans',sans-serif; font-size: clamp(1.05rem,2vw,1.3rem); font-style: normal; font-weight: 500; line-height: 1.55; letter-spacing: -.015em; }
 .servicios-unas { padding: 88px clamp(20px,7vw,100px) 85px; background: linear-gradient(180deg,var(--ivory),#fbf4f3 100%); }
 .section-heading { text-align: center; margin: 0 auto 48px; }
 .section-heading h2 { margin-top: 16px; font: 500 clamp(2.3rem,5vw,3.7rem)/1.13 'DM Sans',sans-serif; }
