@@ -97,12 +97,12 @@ button { font: inherit; }
 .site-footer > p { margin-top: 15px; color: #c8bfc0; font: 400 .84rem/1.6 'DM Sans',sans-serif; }
 .footer-bottom { max-width: 1040px; margin: 38px auto 0; padding-top: 16px; display: flex; justify-content: space-between; gap: 15px; border-top: 1px solid rgba(255,255,255,.14); color: #c8bfc0; font-size: .67rem; }
 .footer-bottom a { color: var(--pink); }
-.back-to-top-footer { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 9px 15px; border: 1px solid rgba(242,221,226,.55); border-radius: 30px; background: rgba(242,221,226,.1); color: var(--pink) !important; font-size: .7rem; font-weight: 500; letter-spacing: .025em; transition: background .22s ease, color .22s ease, transform .22s ease, border-color .22s ease; }
-.back-to-top-footer span { display: inline-block; font-size: .95rem; transition: transform .22s ease; }
-.back-to-top-footer:hover { background: var(--pink); border-color: var(--pink); color: var(--black) !important; transform: translateY(-2px); }
-.back-to-top-footer:hover span { transform: translateY(-3px); }
-.back-to-top-footer:active { transform: translateY(0) scale(.97); }
-.back-to-top-footer:focus-visible { outline: 2px solid var(--pink); outline-offset: 4px; }
+.catalog-footer .back-to-top-footer { display: inline-flex; align-items: center; justify-content: center; gap: 9px; margin-top: 4px; padding: 9px 17px; border: 1px solid var(--champagne); border-radius: 30px; background: var(--ivory); color: var(--black); font-size: .7rem; font-weight: 500; letter-spacing: .025em; transition: background .22s ease, color .22s ease, transform .22s ease, border-color .22s ease; }
+.catalog-footer .back-to-top-footer span { display: inline-block; color: var(--rose-dark); font-size: .95rem; transition: transform .22s ease; }
+.catalog-footer .back-to-top-footer:hover { background: var(--pink-light); border-color: var(--rose); color: var(--black); transform: translateY(-2px); }
+.catalog-footer .back-to-top-footer:hover span { transform: translateY(-3px); }
+.catalog-footer .back-to-top-footer:active { transform: translateY(0) scale(.97); }
+.catalog-footer .back-to-top-footer:focus-visible { outline: 2px solid var(--rose); outline-offset: 4px; }
 @media (max-width: 760px) {
     .site-header { min-height: 70px; padding: 11px 18px; gap: 10px; }
     .brand-monogram { width: 38px; height: 38px; }
