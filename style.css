@@ -148,3 +148,60 @@ button { font: inherit; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: .01ms !important; }
 }
+
+
+/* GARANTÍA */
+.garantia-section { max-width: 1040px; margin: 86px auto 0; scroll-margin-top: 105px; }
+.garantia-heading { max-width: 590px; margin: 0 auto 32px; text-align: center; }
+.garantia-heading h2 { margin-top: 13px; font: 500 clamp(2.2rem,4vw,3.2rem)/1.15 'Playfair Display',serif; }
+.garantia-heading h2 em { color: var(--rose-dark); font-weight: 400; }
+.garantia-heading p { margin-top: 12px; color: var(--gray); font-size: .86rem; line-height: 1.7; }
+.garantia-card { display: grid; grid-template-columns: .9fr 1.1fr; border: 1px solid rgba(216,198,181,.8); background: var(--ivory); box-shadow: 0 15px 38px rgba(50,36,37,.05); }
+.garantia-incluye, .garantia-condiciones { padding: clamp(23px,4vw,42px); }
+.garantia-incluye { background: var(--pink-light); }
+.garantia-icon { color: var(--rose-dark); font-size: 1.45rem; }
+.garantia-incluye h3, .garantia-condiciones h3 { margin-top: 12px; font: 500 1.5rem 'Playfair Display',serif; }
+.garantia-incluye > p { margin-top: 9px; color: var(--gray); font-size: .82rem; line-height: 1.6; }
+.garantia-list, .condiciones-list { list-style: none; margin-top: 20px; }
+.garantia-list li { position: relative; padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(216,198,181,.5); color: #4d4546; font-size: .84rem; }
+.garantia-list li::before { content: "✓"; position: absolute; left: 0; color: var(--rose-dark); font-weight: 700; }
+.garantia-label { color: var(--rose-dark); font-size: .6rem; font-weight: 700; letter-spacing: .18em; }
+.garantia-plazo { display: flex; align-items: center; gap: 13px; margin: 20px 0 15px; padding: 13px 16px; background: var(--pink-light); }
+.garantia-plazo strong { color: var(--rose-dark); font: 500 2rem 'Playfair Display',serif; white-space: nowrap; }
+.garantia-plazo span { color: var(--gray); font-size: .77rem; line-height: 1.5; }
+.condiciones-list li { position: relative; margin: 0 0 13px; padding-left: 19px; color: #5f5758; font-size: .82rem; line-height: 1.7; }
+.condiciones-list li::before { content: "•"; position: absolute; left: 2px; color: var(--rose-dark); font-size: 1.1rem; }
+.garantia-despedida { max-width: 650px; margin: 20px auto 0; color: var(--gray); text-align: center; font: italic 1rem/1.7 'Playfair Display',serif; }
+
+/* Ajustes de adaptación para pantallas medianas y móviles */
+@media (max-width: 900px) {
+    .hero { padding-left: 6%; padding-right: 6%; gap: 4%; }
+    .hero h1 { font-size: clamp(2.8rem,6vw,4.2rem); }
+    .hero-photo-wrap { width: min(100%,370px); }
+    .catalog-grid { gap: 18px; }
+}
+@media (max-width: 560px) {
+    .site-header { display: grid; grid-template-columns: 1fr auto; row-gap: 10px; }
+    .brand { min-width: 0; }
+    .header-cta { margin: 0; }
+    .main-nav { grid-column: 1 / -1; order: initial; display: flex; justify-content: space-between; gap: 8px; width: 100%; padding-top: 10px; border-top: 1px solid var(--line); }
+    .main-nav a, .main-nav a:last-child { display: inline; font-size: .68rem; }
+    .hero { padding-top: 39px; }
+    .hero-photo-wrap { width: min(86%,330px); }
+    .photo-caption { max-width: calc(100% - 12px); font-size: .65rem; }
+    .intro-strip > span:first-child { white-space: normal; }
+    .garantia-section { margin-top: 62px; }
+    .garantia-card { grid-template-columns: 1fr; }
+    .garantia-incluye, .garantia-condiciones { padding: 25px 21px; }
+    .garantia-plazo { align-items: flex-start; }
+    .garantia-despedida { padding: 0 10px; font-size: .94rem; }
+    .back-to-top { right: 13px; bottom: 13px; width: 39px; height: 39px; }
+}
+@media (max-width: 360px) {
+    .brand-name { font-size: .61rem; }
+    .brand-monogram { width: 34px; height: 34px; }
+    .header-cta { padding: 8px 9px; font-size: .64rem; }
+    .main-nav a { font-size: .62rem !important; }
+    .servicio-item { font-size: .73rem; }
+    .precio { font-size: .75rem; }
+}
