@@ -1,0 +1,49 @@
+
+/* =================================
+   TRENDY KIM SPA
+   Identidad visual
+================================= */
+
+:root {
+    --rosa-nude: #E8D3D0;
+    --rosa-suave: #F5EAE7;
+    --rosa-profundo: #B9908E;
+    --blanco: #FFFFFF;
+    --fondo: #FCFAF8;
+    --negro: #292625;
+    --gris: #817A77;
+    --beige: #EDE5DF;
+}
+
+/* CONFIGURACIÓN GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--negro);
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+}
+
+/* CONTENEDORES */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* EN CONSTRUCCIÓN */
