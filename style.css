@@ -25,8 +25,15 @@ button { font: inherit; }
 .brand-name { color: var(--black); font-family: 'DM Sans',sans-serif; font-size: 1.38rem; font-weight: 500; line-height: 1; letter-spacing: .015em; white-space: nowrap; }
 .brand-name small { display: block; margin-top: 5px; color: var(--rose-dark); font-family: 'DM Sans',sans-serif; font-size: .52rem; letter-spacing: .22em; font-weight: 600; text-align: left; }
 .main-nav { display: flex; align-items: center; gap: clamp(18px,3vw,42px); }
-.main-nav a { color: #625b5c; font-size: .8rem; transition: color .2s; }
-.main-nav a:hover, .text-link:hover { color: var(--rose-dark); }
+.main-nav > a, .nav-dropdown summary { color: #625b5c; font-size: .8rem; font-weight: 500; transition: color .2s; cursor: pointer; list-style: none; }
+.nav-dropdown summary::-webkit-details-marker { display: none; }
+.nav-dropdown summary::after { content: "⌄"; margin-left: 6px; color: var(--rose-dark); font-size: .78rem; }
+.nav-dropdown { position: relative; }
+.nav-dropdown[open] summary, .main-nav > a:hover, .nav-dropdown summary:hover { color: var(--rose-dark); }
+.nav-dropdown-menu { position: absolute; top: calc(100% + 17px); left: -18px; z-index: 30; width: 225px; padding: 8px; display: grid; gap: 2px; border: 1px solid var(--line); border-radius: 8px; background: var(--ivory); box-shadow: 0 14px 32px rgba(33,31,32,.11); }
+.nav-dropdown-menu a { padding: 10px 12px; border-radius: 5px; color: #51494a; font-size: .76rem; line-height: 1.35; }
+.nav-dropdown-menu a:hover { background: var(--pink-light); color: var(--rose-dark); }
+.text-link:hover { color: var(--rose-dark); }
 .header-cta { border: 1px solid var(--champagne); padding: 11px 17px; font-size: .75rem; letter-spacing: .04em; transition: .2s; }
 .header-cta:hover { background: var(--pink-light); border-color: var(--rose); }
 .header-cta span { margin-left: 8px; }
@@ -87,7 +94,7 @@ button { font: inherit; }
 .site-footer { padding: 48px clamp(22px,7vw,100px) 20px; background: var(--black); color: var(--ivory); text-align: center; }
 .footer-brand { font: 500 1.1rem 'DM Sans',sans-serif; letter-spacing: .18em; }
 .footer-brand span { display: block; margin-top: 6px; color: var(--pink); font: .55rem 'DM Sans',sans-serif; letter-spacing: .28em; }
-.site-footer > p { margin-top: 15px; color: #c8bfc0; font: italic .9rem 'DM Sans',sans-serif; }
+.site-footer > p { margin-top: 15px; color: #c8bfc0; font: 400 .84rem/1.6 'DM Sans',sans-serif; }
 .footer-bottom { max-width: 1040px; margin: 38px auto 0; padding-top: 16px; display: flex; justify-content: space-between; gap: 15px; border-top: 1px solid rgba(255,255,255,.14); color: #c8bfc0; font-size: .67rem; }
 .footer-bottom a { color: var(--pink); }
 .back-to-top { position: fixed; right: 20px; bottom: 20px; z-index: 15; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--champagne); border-radius: 50%; background: var(--ivory); color: var(--rose-dark); font-size: 1.2rem; box-shadow: 0 5px 18px rgba(33,31,32,.1); transition: .2s; }
@@ -171,7 +178,7 @@ button { font: inherit; }
 .garantia-plazo span { color: var(--gray); font-size: .77rem; line-height: 1.5; }
 .condiciones-list li { position: relative; margin: 0 0 13px; padding-left: 19px; color: #5f5758; font-size: .82rem; line-height: 1.7; }
 .condiciones-list li::before { content: "•"; position: absolute; left: 2px; color: var(--rose-dark); font-size: 1.1rem; }
-.garantia-despedida { max-width: 650px; margin: 20px auto 0; color: var(--gray); text-align: center; font: italic 1rem/1.7 'DM Sans',sans-serif; }
+.garantia-despedida { max-width: 650px; margin: 18px auto 0; color: var(--gray); text-align: center; font: 400 .82rem/1.65 'DM Sans',sans-serif; }
 
 /* Ajustes de adaptación para pantallas medianas y móviles */
 @media (max-width: 900px) {
@@ -194,7 +201,7 @@ button { font: inherit; }
     .garantia-card { grid-template-columns: 1fr; }
     .garantia-incluye, .garantia-condiciones { padding: 25px 21px; }
     .garantia-plazo { align-items: flex-start; }
-    .garantia-despedida { padding: 0 10px; font-size: .94rem; }
+    .garantia-despedida { padding: 0 10px; font-size: .78rem; }
     .back-to-top { right: 13px; bottom: 13px; width: 39px; height: 39px; }
 }
 @media (max-width: 360px) {
@@ -243,4 +250,20 @@ button { font: inherit; }
 @media (max-width: 560px) {
     .hair-section-heading { margin: 62px auto 30px; }
     .service-photo-placeholder { aspect-ratio: 16 / 10; }
+}
+
+
+/* Tipografía unificada y minimalista */
+body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
+.hero h1 em, .section-heading h2 em, .catalog-footer em,
+.garantia-heading h2 em, .hair-section-heading h2 span,
+.photo-caption, .site-footer > p, .garantia-despedida { font-style: normal; }
+.nav-dropdown-menu a { display: block; }
+@media (max-width: 760px) {
+    .nav-dropdown summary { font-size: .69rem; }
+}
+@media (max-width: 560px) {
+    .nav-dropdown { position: static; }
+    .nav-dropdown-menu { top: calc(100% + 6px); left: 0; right: 0; width: min(100%, 340px); margin: 0 auto; max-height: min(65vh, 390px); overflow-y: auto; }
+    .main-nav { position: relative; }
 }
