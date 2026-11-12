@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (year) year.textContent = new Date().getFullYear();
 
     const catalogText = [
-        "TRENDY KIM SPA | CATÁLOGO DE SERVICIOS",
+        "SPA TRENDY KIM | CATÁLOGO DE SERVICIOS",
         "",
         "UÑAS TRADICIONAL",
         "Limpieza manos — $15.000",
@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (shareButton) {
         shareButton.addEventListener("click", async () => {
             const shareData = {
-                title: "Trendy Kim Spa",
-                text: "Conoce los servicios de Trendy Kim Spa.",
+                title: "Spa Trendy Kim",
+                text: "Conoce los servicios de Spa Trendy Kim.",
                 url: window.location.href
             };
             try {
