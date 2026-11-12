@@ -97,8 +97,12 @@ button { font: inherit; }
 .site-footer > p { margin-top: 15px; color: #c8bfc0; font: 400 .84rem/1.6 'DM Sans',sans-serif; }
 .footer-bottom { max-width: 1040px; margin: 38px auto 0; padding-top: 16px; display: flex; justify-content: space-between; gap: 15px; border-top: 1px solid rgba(255,255,255,.14); color: #c8bfc0; font-size: .67rem; }
 .footer-bottom a { color: var(--pink); }
-.back-to-top { position: fixed; right: 20px; bottom: 20px; z-index: 15; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--champagne); border-radius: 50%; background: var(--ivory); color: var(--rose-dark); font-size: 1.2rem; box-shadow: 0 5px 18px rgba(33,31,32,.1); transition: .2s; }
-.back-to-top:hover { background: var(--pink); transform: translateY(-3px); }
+.back-to-top-footer { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 9px 15px; border: 1px solid rgba(242,221,226,.55); border-radius: 30px; background: rgba(242,221,226,.1); color: var(--pink) !important; font-size: .7rem; font-weight: 500; letter-spacing: .025em; transition: background .22s ease, color .22s ease, transform .22s ease, border-color .22s ease; }
+.back-to-top-footer span { display: inline-block; font-size: .95rem; transition: transform .22s ease; }
+.back-to-top-footer:hover { background: var(--pink); border-color: var(--pink); color: var(--black) !important; transform: translateY(-2px); }
+.back-to-top-footer:hover span { transform: translateY(-3px); }
+.back-to-top-footer:active { transform: translateY(0) scale(.97); }
+.back-to-top-footer:focus-visible { outline: 2px solid var(--pink); outline-offset: 4px; }
 @media (max-width: 760px) {
     .site-header { min-height: 70px; padding: 11px 18px; gap: 10px; }
     .brand-monogram { width: 38px; height: 38px; }
@@ -202,7 +206,6 @@ button { font: inherit; }
     .garantia-incluye, .garantia-condiciones { padding: 25px 21px; }
     .garantia-plazo { align-items: flex-start; }
     .garantia-despedida { padding: 0 10px; font-size: .78rem; }
-    .back-to-top { right: 13px; bottom: 13px; width: 39px; height: 39px; }
 }
 @media (max-width: 360px) {
     .brand-name { font-size: 1.08rem; }
