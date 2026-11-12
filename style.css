@@ -21,9 +21,9 @@ button { font: inherit; }
     position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
 }
 .brand { display: inline-flex; align-items: center; gap: 11px; }
-.brand-monogram { width: 43px; height: 43px; display: grid; place-items: center; border: 1px solid var(--champagne); border-radius: 50%; color: var(--rose-dark); font-family: 'Playfair Display',serif; font-size: 1.05rem; }
-.brand-name { font-size: .78rem; font-weight: 700; letter-spacing: .17em; }
-.brand-name small { display: block; margin-top: 4px; color: var(--rose-dark); font-size: .56rem; letter-spacing: .27em; font-weight: 500; }
+.brand-monogram { width: 43px; height: 43px; flex: 0 0 43px; display: grid; place-items: center; border: 1px solid var(--champagne); border-radius: 50%; color: var(--rose-dark); font-family: 'Playfair Display',serif; font-size: 1.55rem; line-height: 1; }
+.brand-name { color: var(--rose-dark); font-family: 'Parisienne', cursive; font-size: 1.8rem; font-weight: 400; line-height: 1; letter-spacing: 0; white-space: nowrap; }
+.brand-name small { display: block; margin-top: 3px; color: var(--rose-dark); font-family: 'DM Sans',sans-serif; font-size: .49rem; letter-spacing: .22em; font-weight: 600; text-align: center; }
 .main-nav { display: flex; align-items: center; gap: clamp(18px,3vw,42px); }
 .main-nav a { color: #625b5c; font-size: .8rem; transition: color .2s; }
 .main-nav a:hover, .text-link:hover { color: var(--rose-dark); }
@@ -86,8 +86,8 @@ button { font: inherit; }
 .catalog-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 11px; }
 .action-feedback { min-height: 20px; margin-top: 12px; color: var(--rose-dark); font-size: .75rem; }
 .site-footer { padding: 48px clamp(22px,7vw,100px) 20px; background: var(--black); color: var(--ivory); text-align: center; }
-.footer-brand { font: 500 1.1rem 'Playfair Display',serif; letter-spacing: .18em; }
-.footer-brand span { display: block; margin-top: 6px; color: var(--pink); font: .55rem 'DM Sans',sans-serif; letter-spacing: .28em; }
+.footer-brand { color: var(--pink); font: 1.9rem 'Parisienne',cursive; letter-spacing: 0; }
+.footer-brand span { display: block; margin-top: 4px; color: var(--pink); font: 600 .52rem 'DM Sans',sans-serif; letter-spacing: .22em; }
 .site-footer > p { margin-top: 15px; color: #c8bfc0; font: italic .9rem 'Playfair Display',serif; }
 .footer-bottom { max-width: 1040px; margin: 38px auto 0; padding-top: 16px; display: flex; justify-content: space-between; gap: 15px; border-top: 1px solid rgba(255,255,255,.14); color: #c8bfc0; font-size: .67rem; }
 .footer-bottom a { color: var(--pink); }
@@ -96,7 +96,8 @@ button { font: inherit; }
 @media (max-width: 760px) {
     .site-header { min-height: 70px; padding: 11px 18px; gap: 10px; }
     .brand-monogram { width: 38px; height: 38px; }
-    .brand-name { font-size: .68rem; letter-spacing: .12em; }
+    .brand-name { font-size: 1.55rem; letter-spacing: 0; }
+    .brand-name small { font-size: .43rem; letter-spacing: .18em; }
     .main-nav { gap: 14px; }
     .main-nav a { font-size: .69rem; }
     .main-nav a:last-child { display: none; }
@@ -198,8 +199,9 @@ button { font: inherit; }
     .back-to-top { right: 13px; bottom: 13px; width: 39px; height: 39px; }
 }
 @media (max-width: 360px) {
-    .brand-name { font-size: .61rem; }
-    .brand-monogram { width: 34px; height: 34px; }
+    .brand-name { font-size: 1.35rem; }
+    .brand-name small { font-size: .38rem; letter-spacing: .15em; }
+    .brand-monogram { width: 34px; height: 34px; flex-basis: 34px; font-size: 1.3rem; }
     .header-cta { padding: 8px 9px; font-size: .64rem; }
     .main-nav a { font-size: .62rem !important; }
     .servicio-item { font-size: .73rem; }
