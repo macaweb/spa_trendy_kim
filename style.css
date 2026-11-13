@@ -110,7 +110,7 @@ button { font: inherit; }
     .brand-name small { font-size: .47rem; letter-spacing: .18em; }
     .main-nav { gap: 14px; }
     .main-nav a { font-size: .69rem; }
-    .main-nav a:last-child { display: none; }
+    .main-nav a:last-child { display: inline; }
     .header-cta { padding: 9px 11px; font-size: .68rem; }
     .hero { min-height: 0; padding: 54px 7% 65px; grid-template-columns: 1fr  .8fr; gap: 25px; }
     .hero h1 { font-size: clamp(2.5rem,7vw,4rem); }
