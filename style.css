@@ -380,3 +380,70 @@ body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
     .contacto-canales { gap: 7px; }
     .contacto-canales span { min-width: 0; padding: 9px 13px; font-size: .68rem; }
 }
+
+
+/* Presentación de la fundadora y canales reales de contacto */
+.photo-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 205px;
+    padding: 12px 18px 13px;
+    background: var(--black);
+    color: var(--ivory);
+}
+.photo-caption strong {
+    font-size: .92rem;
+    font-weight: 600;
+    letter-spacing: .025em;
+}
+.photo-caption span {
+    color: #e7d8d9;
+    font-size: .62rem;
+    font-weight: 400;
+    letter-spacing: .055em;
+}
+.contacto-canales { align-items: stretch; }
+.contacto-link {
+    min-width: 170px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid rgba(185,133,145,.38);
+    border-radius: 8px;
+    background: rgba(255,253,248,.82);
+    color: var(--black);
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.contacto-link:hover { transform: translateY(-3px); border-color: var(--rose); background: #fff; }
+.contacto-link-label { color: var(--rose-dark); font-size: .64rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.contacto-link strong { font-size: .78rem; font-weight: 600; }
+.contacto-whatsapp { border-color: rgba(92,151,112,.45); }
+.contacto-whatsapp .contacto-link-label { color: #397b50; }
+.contacto-direccion {
+    max-width: 570px;
+    margin: 22px auto 0;
+    padding: 14px 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-top: 1px solid rgba(216,198,181,.8);
+    color: #625b5c;
+    font-size: .77rem;
+    line-height: 1.5;
+    text-align: left;
+}
+.contacto-direccion > span:first-child, .contacto-direccion > span:last-child { color: var(--rose-dark); font-size: 1.1rem; }
+.contacto-direccion small { display: block; margin-bottom: 3px; color: var(--rose-dark); font-size: .56rem; font-weight: 700; letter-spacing: .15em; }
+@media (max-width: 560px) {
+    .photo-caption { min-width: 0; padding: 10px 13px; }
+    .photo-caption strong { font-size: .82rem; }
+    .photo-caption span { font-size: .57rem; }
+    .contacto-link { min-width: 0; flex: 1 1 135px; padding: 12px 10px; }
+    .contacto-link strong { font-size: .7rem; }
+    .contacto-direccion { align-items: flex-start; padding: 14px 4px 0; font-size: .7rem; }
+}
