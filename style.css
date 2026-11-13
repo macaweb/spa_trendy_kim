@@ -270,3 +270,33 @@ body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
     .nav-dropdown-menu { top: calc(100% + 6px); left: 0; right: 0; width: min(100%, 340px); margin: 0 auto; max-height: min(65vh, 390px); overflow-y: auto; }
     .main-nav { position: relative; }
 }
+
+
+/* Navegación y categorías principales del catálogo */
+.category-section-heading {
+    max-width: 680px;
+    margin: 76px auto 34px;
+    text-align: center;
+    scroll-margin-top: 110px;
+}
+.category-section-heading h2 {
+    margin-top: 13px;
+    color: var(--black);
+    font: 500 clamp(2.2rem,4.5vw,3.2rem)/1.15 'DM Sans',sans-serif;
+    letter-spacing: -.045em;
+}
+.category-section-heading p {
+    margin-top: 12px;
+    color: var(--gray);
+    font-size: .88rem;
+    line-height: 1.7;
+}
+.category-section-heading.hair-section-heading {
+    margin-top: 88px;
+    margin-bottom: 34px;
+}
+.category-single-grid { grid-template-columns: minmax(0,508px); justify-content: center; }
+@media (max-width: 560px) {
+    .category-section-heading { margin: 58px auto 27px; }
+    .category-section-heading.hair-section-heading { margin: 64px auto 27px; }
+}
