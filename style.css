@@ -698,3 +698,121 @@ body.booking-open { overflow: hidden; }
     .service-add-button[aria-pressed="true"] { animation: none !important; }
     *, *::before, *::after { scroll-behavior: auto !important; }
 }
+
+
+/* Menú de servicios más visible y con despliegue animado */
+.nav-dropdown-menu {
+    width: 248px;
+    padding: 11px;
+    gap: 5px;
+    border: 1px solid rgba(185,133,145,.32);
+    border-radius: 12px;
+    background: rgba(255,253,248,.98);
+    box-shadow: 0 18px 42px rgba(53,36,40,.14);
+    transform-origin: top left;
+}
+.nav-dropdown[open] .nav-dropdown-menu {
+    animation: tk-menu-in .26s cubic-bezier(.2,.75,.25,1) both;
+}
+@keyframes tk-menu-in {
+    from { opacity: 0; transform: translateY(-9px) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.nav-dropdown-menu a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 43px;
+    padding: 11px 13px 11px 17px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #51494a;
+    font-size: .79rem;
+    font-weight: 500;
+    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, padding .2s ease;
+}
+.nav-dropdown-menu a::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    width: 3px;
+    height: 0;
+    border-radius: 4px;
+    background: var(--rose-dark);
+    transition: height .2s ease;
+}
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus-visible,
+.nav-dropdown-menu a:active {
+    padding-left: 21px;
+    border-color: rgba(185,133,145,.2);
+    background: var(--pink-light);
+    color: var(--rose-dark);
+    transform: translateX(2px);
+    outline: none;
+}
+.nav-dropdown-menu a:hover::before,
+.nav-dropdown-menu a:focus-visible::before,
+.nav-dropdown-menu a:active::before { height: 18px; }
+.nav-dropdown summary:focus-visible,
+.main-nav > a:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 5px;
+    border-radius: 3px;
+}
+
+/* Respuesta rosa al tocar y microinteracciones coherentes en los botones */
+.hero-booking-button,
+.booking-browse-button,
+.booking-submit,
+.button,
+.contacto-link,
+.service-add-button,
+.selection-fab {
+    -webkit-tap-highlight-color: rgba(185,133,145,.18);
+}
+.hero-booking-button:active,
+.booking-browse-button:active,
+.booking-submit:active,
+.button:active,
+.contacto-link:active {
+    background-color: var(--rose-dark);
+    border-color: var(--rose-dark);
+    color: #fff;
+    transform: translateY(1px) scale(.98);
+}
+.booking-browse-button:focus-visible,
+.hero-booking-button:focus-visible,
+.booking-submit:focus-visible,
+.button:focus-visible,
+.contacto-link:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 3px;
+}
+.booking-browse-button:hover {
+    background: var(--pink);
+    border-color: var(--rose-dark);
+    color: var(--rose-dark);
+    transform: translateY(-2px);
+}
+.booking-submit:hover { background: var(--rose-dark); }
+.contacto-link:active { background: var(--pink); color: var(--rose-dark); }
+.selection-remove { padding: 7px 9px; border-radius: 5px; transition: color .2s ease, background .2s ease; }
+.selection-remove:hover,
+.selection-remove:active { background: var(--pink-light); color: var(--rose-dark); }
+.shift-options span { transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+.shift-options label:active span { transform: scale(.98); }
+@media (max-width: 560px) {
+    .nav-dropdown-menu {
+        width: min(100%, 340px);
+        padding: 10px;
+        border-radius: 11px;
+        box-shadow: 0 16px 34px rgba(53,36,40,.16);
+    }
+    .nav-dropdown-menu a { min-height: 46px; font-size: .78rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .nav-dropdown[open] .nav-dropdown-menu { animation: none !important; }
+    .nav-dropdown-menu a, .hero-booking-button, .booking-browse-button,
+    .booking-submit, .button, .contacto-link { transition: none !important; }
+}
