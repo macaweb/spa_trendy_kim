@@ -1933,3 +1933,20 @@ html {
     object-fit: cover;
     object-position: center center;
 }
+
+
+/* Más aire entre las categorías para que cada sección del catálogo se distinga */
+.category-section-heading:not(#unas) {
+    margin-top: clamp(82px, 9vw, 116px);
+}
+.category-section-heading + .catalog-grid {
+    margin-top: 30px;
+}
+@media (max-width: 560px) {
+    .category-section-heading:not(#unas) {
+        margin-top: 76px;
+    }
+    .category-section-heading + .catalog-grid {
+        margin-top: 24px;
+    }
+}
