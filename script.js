@@ -176,5 +176,29 @@ document.addEventListener("DOMContentLoaded", () => {
         window.open("https://wa.me/573172326970?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
     });
 
+    // Aparición progresiva de secciones al desplazarse por la página.
+    const motionTargets = document.querySelectorAll(
+        ".intro-strip, .booking-intro, .section-heading, .category-section-heading, .grupo-servicios, .garantia-section, .contacto-section, .catalog-footer"
+    );
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        motionTargets.forEach(element => element.classList.add("is-visible"));
+    } else {
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+        motionTargets.forEach((element, index) => {
+            element.classList.add("reveal-on-scroll");
+            if (element.classList.contains("grupo-servicios")) {
+                element.style.setProperty("--reveal-delay", (index % 2) * 90 + "ms");
+            }
+            revealObserver.observe(element);
+        });
+    }
+
     renderSelection();
 });
