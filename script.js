@@ -67,12 +67,33 @@ document.addEventListener("DOMContentLoaded", () => {
                         <label><input type="radio" name="shift" value="Tarde" required><span>Tarde</span></label>
                     </div>
                 </fieldset>
+                <label>¿Qué hora es preferible para ti?
+                    <select name="time" required disabled>
+                        <option value="">Primero selecciona una jornada</option>
+                    </select>
+                </label>
                 <label>Elige la fecha de tu cita<input name="date" type="date" required></label>
                 <p class="booking-note">Tu solicitud se enviará por WhatsApp. La cita quedará pendiente de confirmación.</p>
                 <button class="booking-submit" type="submit">Solicitar mi cita</button>
             </form>
         </section>`;
     document.body.appendChild(panel);
+
+    const timeSelect = panel.querySelector('select[name="time"]');
+    const shiftInputs = [...panel.querySelectorAll('input[name="shift"]')];
+    const timeSlots = {
+        "Mañana": ["08:00", "09:00", "10:00", "11:00", "12:00"],
+        "Tarde": ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
+    };
+    shiftInputs.forEach(input => {
+        input.addEventListener("change", () => {
+            const slots = timeSlots[input.value] || [];
+            timeSelect.innerHTML = '<option value="">Selecciona una hora</option>' +
+                slots.map(time => '<option value="' + time + '">' + time + '</option>').join("");
+            timeSelect.disabled = slots.length === 0;
+            timeSelect.value = "";
+        });
+    });
 
     const dateInput = panel.querySelector('input[name="date"]');
     const today = new Date();
@@ -201,12 +222,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const message = [
             "*SPA TRENDY KIM*",
             "*SOLICITUD DE CITA*",
-            "━━━━━━━━━━━━━━━━━━",
             "",
             "*SERVICIOS QUE DESEO*",
             "",
             ...serviceLines,
-            "━━━━━━━━━━━━━━━━━━",
+            "────────────",
             "*" + (hasPendingPrices ? "SUBTOTAL" : "TOTAL ESTIMADO") + "*",
             totalLine,
             "",
@@ -214,9 +234,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "Nombre: " + form.get("name"),
             "WhatsApp: " + form.get("phone"),
             "Jornada preferida: " + form.get("shift"),
+            "Hora preferida: " + form.get("time"),
             "Fecha preferida: " + dateLabel,
             "",
-            "Solicito confirmar disponibilidad para esta fecha y jornada.",
+            "Solicito confirmar disponibilidad para esta fecha, jornada y hora.",
             "¡Muchas gracias!"
         ].join("\n");
         const whatsappWindow = window.open(
