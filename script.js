@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const knownPrices = [...selection.values()].filter(item => item.amount > 0);
         const hasPendingPrices = [...selection.values()].some(item => item.amount === 0);
         const estimatedTotal = knownPrices.reduce((sum, item) => sum + item.amount, 0);
-        const totalLine = "Subtotal de precios publicados: $" +
+        const totalLine = boldHeading("TOTAL:") + " $" +
             estimatedTotal.toLocaleString("es-CO") + " COP" +
             (hasPendingPrices ? " + servicios por cotizar" : "");
         const message = [
@@ -279,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "",
             ...serviceLines,
             "────────────",
-            (hasPendingPrices ? "Subtotal" : "Total estimado") + ":",
             totalLine,
             "",
             boldHeading("DATOS PARA LA CITA") + ":",
