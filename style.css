@@ -1919,3 +1919,17 @@ html {
     object-fit: contain;
     object-position: center center;
 }
+
+/* Encuadre propio para las fotos de manicura: mostrar las manos completas */
+#unas-tradicional .service-photo-placeholder,
+#unas-semi-permanente .service-photo-placeholder {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+#unas-tradicional .service-photo-placeholder img,
+#unas-semi-permanente .service-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
