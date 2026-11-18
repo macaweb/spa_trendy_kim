@@ -2094,3 +2094,85 @@ span.flatpickr-weekday {
 .flatpickr-calendar.arrowTop:after {
     border-bottom-color: var(--pink-light) !important;
 }
+
+
+/* Ajustes finales de interacción: conservar la paleta y destacar la solicitud */
+.booking-submit,
+.booking-submit:hover,
+.booking-submit:focus,
+.booking-submit:focus-visible {
+    background: #d63384 !important;
+    border-color: #d63384 !important;
+    color: #fff !important;
+}
+.booking-submit:hover,
+.booking-submit:focus-visible {
+    box-shadow: 0 8px 22px rgba(214,51,132,.28);
+}
+.booking-submit:active {
+    background: #b72a70 !important;
+    border-color: #b72a70 !important;
+    transform: scale(1.055) !important;
+    box-shadow: 0 3px 12px rgba(183,42,112,.25);
+}
+
+/* Zoom breve al tocar controles y enlaces, sin modificar sus colores */
+button,
+a[href],
+.nav-dropdown summary,
+.nav-dropdown-menu a,
+.shift-options label span,
+.service-add-button,
+.selection-remove {
+    transform-origin: center;
+    transition: transform .2s cubic-bezier(.2,.8,.2,1);
+    -webkit-tap-highlight-color: transparent;
+}
+button:active,
+a[href]:active,
+.nav-dropdown summary:active,
+.nav-dropdown-menu a:active,
+.shift-options label:active span {
+    transform: scale(1.045);
+}
+.service-add-button:active,
+.selection-fab:active,
+.selection-remove:active {
+    transform: scale(1.08) !important;
+}
+.nav-dropdown-menu a:active {
+    transform: translateX(2px) scale(1.045) !important;
+}
+
+/* La X gira al tocarla y al pasar el cursor */
+.booking-close {
+    transition: transform .28s cubic-bezier(.2,.8,.2,1), color .2s ease, background-color .2s ease !important;
+}
+.booking-close:hover,
+.booking-close:focus-visible {
+    transform: rotate(90deg) scale(1.08);
+}
+.booking-close:active {
+    transform: rotate(135deg) scale(1.16) !important;
+}
+
+/* Mantener el movimiento accesible si el dispositivo solicita menos animación */
+@media (prefers-reduced-motion: reduce) {
+    button,
+    a[href],
+    .nav-dropdown summary,
+    .nav-dropdown-menu a,
+    .shift-options label span,
+    .booking-close {
+        transition: none !important;
+    }
+    button:active,
+    a[href]:active,
+    .nav-dropdown summary:active,
+    .nav-dropdown-menu a:active,
+    .shift-options label:active span,
+    .booking-close:hover,
+    .booking-close:active {
+        transform: none !important;
+    }
+}
