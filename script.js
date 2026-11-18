@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    // Feedback táctil explícito para el CTA principal (también en móviles sin hover).
+    const heroBookingButton = document.querySelector(".hero-booking-button");
+    if (heroBookingButton) {
+        const press = () => {
+            heroBookingButton.classList.remove("is-pressed");
+            void heroBookingButton.offsetWidth;
+            heroBookingButton.classList.add("is-pressed");
+        };
+        const release = () => heroBookingButton.classList.remove("is-pressed");
+        heroBookingButton.addEventListener("pointerdown", press);
+        ["pointerup", "pointercancel", "pointerleave", "blur"].forEach(eventName => {
+            heroBookingButton.addEventListener(eventName, release);
+        });
+        heroBookingButton.addEventListener("animationend", event => {
+            if (event.animationName === "tk-cta-tap") release();
+        });
+    }
+
     const year = document.getElementById("currentYear");
     if (year) year.textContent = new Date().getFullYear();
 
