@@ -1748,3 +1748,20 @@ html {
     .contacto-section .contacto-pie-foto .contacto-link > span { font-size: .75rem; }
     .contacto-section .contacto-pie-foto .contacto-direccion-pie { font-size: .68rem; }
 }
+
+
+/* Uniformar tipografía de todas las categorías del desplegable */
+.nav-dropdown-menu a,
+.nav-dropdown-menu a:visited {
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: .79rem !important;
+    font-weight: 500 !important;
+    line-height: 1.35 !important;
+    letter-spacing: normal !important;
+}
+@media (max-width: 560px) {
+    .nav-dropdown-menu a,
+    .nav-dropdown-menu a:visited {
+        font-size: .78rem !important;
+    }
+}
