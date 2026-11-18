@@ -909,3 +909,147 @@ body.booking-open { overflow: hidden; }
     .contacto-visitanos { margin-top: 19px; padding: 7px 4px 12px; }
     .contacto-visitanos .contacto-direccion { align-items: center; padding: 12px 0 9px; }
 }
+
+
+/* Microinteracciones reforzadas: respuesta clara al pasar, tocar y seleccionar */
+.hero-booking-button,
+.booking-browse-button,
+.booking-submit,
+.service-add-button,
+.selection-fab,
+.selection-remove,
+.contacto-link,
+.visitanos-redes a,
+.nav-dropdown summary,
+.nav-dropdown-menu a,
+button,
+a.button {
+    transform-origin: center;
+    -webkit-tap-highlight-color: transparent;
+}
+.hero-booking-button {
+    transition: transform .24s cubic-bezier(.2,.8,.2,1), background .24s ease, color .24s ease, box-shadow .24s ease;
+    box-shadow: 0 4px 12px rgba(33,31,32,.12);
+}
+.hero-booking-button:hover,
+.hero-booking-button:focus-visible {
+    background: var(--rose-dark);
+    border-color: var(--rose-dark);
+    color: #fff;
+    transform: translateY(-3px) scale(1.045);
+    box-shadow: 0 9px 22px rgba(152,103,116,.28);
+}
+.hero-booking-button:active {
+    background: #D94D91;
+    border-color: #D94D91;
+    color: #fff;
+    transform: translateY(0) scale(.93);
+    box-shadow: 0 2px 7px rgba(152,103,116,.2);
+}
+.booking-browse-button,
+.booking-submit,
+.service-add-button,
+.selection-fab,
+.selection-remove,
+.contacto-link,
+.visitanos-redes a,
+.nav-dropdown-menu a {
+    transition: transform .22s cubic-bezier(.2,.8,.2,1),
+        background-color .22s ease, color .22s ease,
+        border-color .22s ease, box-shadow .22s ease;
+}
+.booking-browse-button:hover,
+.booking-submit:hover,
+.service-add-button:hover,
+.selection-fab:hover,
+.selection-remove:hover,
+.contacto-link:hover,
+.visitanos-redes a:hover {
+    transform: translateY(-2px) scale(1.025);
+}
+.booking-browse-button:active,
+.booking-submit:active,
+.service-add-button:active,
+.selection-fab:active,
+.selection-remove:active,
+.contacto-link:active,
+.visitanos-redes a:active {
+    transform: scale(.94);
+}
+.booking-browse-button:hover,
+.booking-submit:hover {
+    background: #D94D91;
+    border-color: #D94D91;
+    color: #fff;
+    box-shadow: 0 7px 18px rgba(192,38,120,.18);
+}
+.booking-submit {
+    transition: transform .22s cubic-bezier(.2,.8,.2,1), background .22s ease, box-shadow .22s ease;
+}
+.service-add-button:hover {
+    background: var(--pink);
+    border-color: var(--rose-dark);
+    color: var(--rose-dark);
+    box-shadow: 0 6px 15px rgba(185,133,145,.18);
+}
+.service-add-button:hover::after { transform: scaleX(0); }
+.service-add-button[aria-pressed="true"] {
+    background: var(--rose-dark);
+    border-color: var(--rose-dark);
+    color: #fff;
+}
+.selection-fab:hover { box-shadow: 0 12px 28px rgba(33,31,32,.23); }
+.contacto-link:hover { box-shadow: 0 8px 18px rgba(185,133,145,.13); }
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus-visible { transform: translateX(3px) scale(1.015); }
+.nav-dropdown-menu a:active { transform: translateX(1px) scale(.97); }
+
+/* Movimiento de entrada suave para las secciones y sus elementos */
+@keyframes tk-section-settle {
+    from { opacity: .65; transform: translateY(12px) scale(.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.reveal-on-scroll.is-visible .category-section-heading,
+.reveal-on-scroll.is-visible .section-heading {
+    animation: tk-section-settle .55s cubic-bezier(.2,.7,.2,1) both;
+}
+@media (hover: none) {
+    .hero-booking-button:hover,
+    .booking-browse-button:hover,
+    .booking-submit:hover,
+    .service-add-button:hover,
+    .selection-fab:hover,
+    .selection-remove:hover,
+    .contacto-link:hover,
+    .visitanos-redes a:hover {
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-booking-button,
+    .booking-browse-button,
+    .booking-submit,
+    .service-add-button,
+    .selection-fab,
+    .selection-remove,
+    .contacto-link,
+    .visitanos-redes a,
+    .nav-dropdown-menu a {
+        transition: none !important;
+        animation: none !important;
+    }
+    .hero-booking-button:hover,
+    .hero-booking-button:active,
+    .booking-browse-button:hover,
+    .booking-browse-button:active,
+    .booking-submit:hover,
+    .booking-submit:active,
+    .service-add-button:hover,
+    .service-add-button:active,
+    .selection-fab:hover,
+    .selection-fab:active,
+    .contacto-link:hover,
+    .contacto-link:active {
+        transform: none !important;
+    }
+}
