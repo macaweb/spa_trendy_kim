@@ -201,15 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
     panel.addEventListener("click", event => { if (event.target === panel) closePanel(); });
     document.addEventListener("keydown", event => { if (event.key === "Escape" && panel.classList.contains("is-open")) closePanel(); });
 
-    panel.querySelector(".appointment-form").addEventListener("submit", event => {
-        event.preventDefault();
+    const appointmentForm = panel.querySelector(".appointment-form");
+    const submitButton = appointmentForm.querySelector(".booking-submit");
+    submitButton.type = "button";
+    submitButton.addEventListener("click", () => {
+        if (!appointmentForm.reportValidity()) return;
         if (!selection.size) {
             alert("Primero elige al menos un servicio del catálogo.");
             closePanel();
             document.querySelector("#unas")?.scrollIntoView({ behavior: "smooth" });
             return;
         }
-        const form = new FormData(event.currentTarget);
+        const form = new FormData(appointmentForm);
         const date = new Date(form.get("date") + "T12:00:00");
         const dateLabel = date.toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
         const groupedServices = new Map();
@@ -262,10 +265,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
         ].join("\n");
-        const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
+        const whatsappUrl = "https://api.whatsapp.com/send?phone=573172326970&text=" + encodeURIComponent(message);
 
-        // Redirige la pestaña actual a WhatsApp para evitar bloqueos de ventanas emergentes.
-        window.location.href = whatsappUrl;
+        // Abre el envío de WhatsApp directamente desde el toque del usuario.
+        window.location.assign(whatsappUrl);
 
         // Conservamos la selección guardada para que siga disponible al volver al catálogo.
     });
