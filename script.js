@@ -237,7 +237,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const date = new Date(dateValue + "T12:00:00");
-        const dateLabel = date.toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+        const dateLabelRaw = date.toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+        const dateLabel = dateLabelRaw.charAt(0).toLocaleUpperCase("es-CO") + dateLabelRaw.slice(1);
         const groupedServices = new Map();
         selection.forEach(item => {
             if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
@@ -276,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Nombre: " + nameInput.value.trim(),
             "WhatsApp: " + phoneInput.value.trim(),
             "Jornada preferida: " + shiftInput.value,
-            "Fecha preferida: " + dateLabel,
+            boldHeading("Fecha preferida:") + " " + boldHeading(dateLabel),
             "",
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
