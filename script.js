@@ -78,7 +78,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const dateInput = panel.querySelector('input[name="date"]');
     const today = new Date();
     const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-    dateInput.min = localToday;
+    dateInput.type = "text";
+    dateInput.placeholder = "Selecciona una fecha";
+    dateInput.readOnly = true;
+    if (window.flatpickr) {
+        flatpickr(dateInput, {
+            locale: "es",
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "d \\de F \\de Y",
+            minDate: localToday,
+            disableMobile: true,
+            allowInput: false,
+            monthSelectorType: "static"
+        });
+    } else {
+        dateInput.type = "date";
+        dateInput.min = localToday;
+    }
 
     const count = floating.querySelector(".selection-count");
     const list = panel.querySelector(".selection-list");
