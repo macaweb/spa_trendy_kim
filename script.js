@@ -237,8 +237,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const date = new Date(dateValue + "T12:00:00");
-        const dateLabelRaw = date.toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-        const dateLabel = dateLabelRaw.charAt(0).toLocaleUpperCase("es-CO") + dateLabelRaw.slice(1);
+        const dateParts = new Intl.DateTimeFormat("es-CO", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }).formatToParts(date);
+        const datePart = type => dateParts.find(part => part.type === type)?.value || "";
+        const capitalize = value => value.charAt(0).toLocaleUpperCase("es-CO") + value.slice(1);
+        const dateLabel = capitalize(datePart("weekday")) + ", " +
+            datePart("day") + " de " + capitalize(datePart("month")) +
+            " de " + datePart("year");
         const groupedServices = new Map();
         selection.forEach(item => {
             if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
