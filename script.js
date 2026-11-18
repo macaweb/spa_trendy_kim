@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </fieldset>
                 <label>Elige la fecha de tu cita<input name="date" type="date" required></label>
                 <p class="booking-note">Tu solicitud se enviará por WhatsApp. La cita quedará pendiente de confirmación.</p>
-                <button class="booking-submit" type="submit">Solicitar mi cita</button>
+                <a class="booking-submit" href="#" role="button">Solicitar mi cita</a>
             </form>
         </section>`;
     document.body.appendChild(panel);
@@ -203,11 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const appointmentForm = panel.querySelector(".appointment-form");
     const submitButton = appointmentForm.querySelector(".booking-submit");
-    submitButton.type = "button";
 
-    // Procesa la solicitud directamente desde el toque, sin depender de la
-    // validación automática del navegador ni de un campo de hora específico.
-    submitButton.addEventListener("click", () => {
+    // El enlace real se prepara al tocarlo; el navegador realiza la navegación.
+    submitButton.addEventListener("click", (event) => {
         const nameInput = appointmentForm.elements.namedItem("name");
         const phoneInput = appointmentForm.elements.namedItem("phone");
         const shiftInput = appointmentForm.querySelector('input[name="shift"]:checked');
@@ -221,6 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!selection.size) missing.push("al menos un servicio");
 
         if (missing.length) {
+            event.preventDefault();
             alert("Para enviar tu solicitud, completa: " + missing.join(", ") + ".");
             return;
         }
@@ -278,10 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ].join("\n");
 
         const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
-
-        // Abrir en la misma pestaña evita que el navegador bloquee una ventana
-        // nueva creada mediante un clic programático.
-        window.location.assign(whatsappUrl);
+        submitButton.href = whatsappUrl;
     });
 
 
