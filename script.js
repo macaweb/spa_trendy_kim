@@ -200,7 +200,20 @@ document.addEventListener("DOMContentLoaded", () => {
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
         ].join("\n");
-        window.open("https://wa.me/573172326970?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+        const whatsappWindow = window.open(
+            "https://wa.me/573172326970?text=" + encodeURIComponent(message),
+            "_blank",
+            "noopener,noreferrer"
+        );
+        // Cada solicitud corresponde a una sola persona. Al abrir WhatsApp,
+        // dejamos el formulario limpio para que la siguiente persona empiece desde cero.
+        if (whatsappWindow) {
+            selection.clear();
+            event.currentTarget.reset();
+            renderSelection();
+        } else {
+            alert("Permite las ventanas emergentes para abrir WhatsApp y enviar tu solicitud.");
+        }
     });
 
 
