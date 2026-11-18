@@ -80,22 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </section>`;
     document.body.appendChild(panel);
 
-    const timeSelect = panel.querySelector('select[name="time"]');
-    const shiftInputs = [...panel.querySelectorAll('input[name="shift"]')];
-    const timeSlots = {
-        "Mañana": ["08:00", "09:00", "10:00", "11:00", "12:00"],
-        "Tarde": ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
-    };
-    shiftInputs.forEach(input => {
-        input.addEventListener("change", () => {
-            const slots = timeSlots[input.value] || [];
-            timeSelect.innerHTML = '<option value="">Selecciona una hora</option>' +
-                slots.map(time => '<option value="' + time + '">' + time + '</option>').join("");
-            timeSelect.disabled = slots.length === 0;
-            timeSelect.value = "";
-        });
-    });
-
     const dateInput = panel.querySelector('input[name="date"]');
     const today = new Date();
     const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
@@ -278,22 +262,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "Nombre: " + form.get("name"),
             "WhatsApp: " + form.get("phone"),
             "Jornada preferida: " + form.get("shift"),
-            "Hora preferida: " + form.get("time"),
             "Fecha preferida: " + dateLabel,
             "",
-            "Solicito confirmar disponibilidad para esta fecha, jornada y hora.",
+            "Solicito confirmar disponibilidad para esta fecha y jornada."
             "¡Muchas gracias!"
         ].join("\n");
         const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
 
-        // Abrimos WhatsApp desde la acción directa del usuario para evitar bloqueos
-        // de ventanas emergentes. Si el navegador lo bloquea, usamos la pestaña actual.
-        const whatsappWindow = window.open(whatsappUrl, "_blank");
-        if (whatsappWindow) {
-            whatsappWindow.opener = null;
-        } else {
-            window.location.assign(whatsappUrl);
-        }
+        // Redirige la pestaña actual a WhatsApp para evitar bloqueos de ventanas emergentes.
+        window.location.href = whatsappUrl;
 
         // Conservamos la selección guardada para que siga disponible al volver al catálogo.
     });
