@@ -1670,3 +1670,31 @@ html {
         padding: 0 12px;
     }
 }
+
+
+/* Iconografía de contacto tomada del pie de AH Parrilla */
+.contacto-section .contacto-pie-foto .contacto-icon {
+    display: block;
+    width: 19px;
+    height: 19px;
+    flex: 0 0 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.contacto-section .contacto-pie-foto .contacto-icon .icono-relleno {
+    fill: currentColor;
+    stroke: none;
+}
+.contacto-section .contacto-pie-foto .whatsapp-icon { color: #35c979; }
+.contacto-section .contacto-pie-foto .instagram-icon { color: #e66a9c; }
+.contacto-section .contacto-pie-foto .facebook-icon { color: #5795f5; }
+@media (max-width: 560px) {
+    .contacto-section .contacto-pie-foto .contacto-icon {
+        width: 19px;
+        height: 19px;
+        flex-basis: 19px;
+    }
+}
