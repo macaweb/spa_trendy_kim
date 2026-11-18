@@ -1312,3 +1312,44 @@ html {
 }
 .instagram-icon .instagram-dot { fill: #B83E83; stroke: none; }
 .facebook-icon { fill: #1877F2; }
+
+
+/* CTA principal: zoom perceptible al tocar, sin alterar su tamaño normal */
+.hero-booking-button {
+    position: relative;
+    isolation: isolate;
+    transform-origin: center;
+    box-shadow: 0 5px 15px rgba(33,31,32,.16);
+    transition: transform .3s cubic-bezier(.2,.8,.2,1),
+        background-color .25s ease, border-color .25s ease,
+        color .25s ease, box-shadow .3s ease;
+}
+.hero-booking-button:hover,
+.hero-booking-button:focus-visible {
+    transform: translateY(-3px) scale(1.07);
+    box-shadow: 0 12px 26px rgba(152,103,116,.32);
+}
+.hero-booking-button:active {
+    transform: scale(1.09);
+    background: #D94D91;
+    border-color: #D94D91;
+    box-shadow: 0 5px 17px rgba(192,38,120,.3);
+}
+@media (hover: none) {
+    .hero-booking-button:hover { transform: none; }
+    .hero-booking-button:active {
+        transform: scale(1.09);
+        background: #D94D91;
+        border-color: #D94D91;
+        color: #fff;
+        box-shadow: 0 5px 17px rgba(192,38,120,.3);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-booking-button,
+    .hero-booking-button:hover,
+    .hero-booking-button:active {
+        transition: none !important;
+        transform: none !important;
+    }
+}
