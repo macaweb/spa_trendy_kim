@@ -1457,3 +1457,53 @@ html {
 @media (prefers-reduced-motion: reduce) {
     .hero-booking-button.is-pressed { animation: none !important; }
 }
+
+
+/* Enlaces del bloque de contacto: discretos, tipo texto, pero claramente interactivos */
+.contacto-section .contacto-pie-foto .contacto-link {
+    padding: 5px 2px;
+    gap: 7px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    min-height: 0;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color .18s ease, opacity .18s ease;
+}
+.contacto-section .contacto-pie-foto .contacto-link:hover,
+.contacto-section .contacto-pie-foto .contacto-link:focus-visible {
+    transform: none;
+    background: transparent;
+    box-shadow: none;
+    color: var(--rose-dark);
+    text-decoration: underline;
+    text-decoration-color: var(--rose);
+    text-underline-offset: 4px;
+    outline: none;
+}
+.contacto-section .contacto-pie-foto .contacto-link:active {
+    opacity: .65;
+}
+.contacto-section .contacto-pie-foto .contacto-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+}
+.contacto-section .contacto-pie-foto .contacto-link-label {
+    font-size: .57rem;
+    letter-spacing: .09em;
+}
+.contacto-section .contacto-pie-foto .contacto-link strong {
+    font-size: .7rem;
+    font-weight: 400;
+}
+@media (max-width: 560px) {
+    .contacto-section .contacto-pie-foto {
+        gap: 10px 16px;
+    }
+    .contacto-section .contacto-pie-foto .contacto-link {
+        padding: 5px 1px;
+    }
+}
