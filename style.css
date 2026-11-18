@@ -1898,3 +1898,15 @@ html {
 @media (max-width: 560px) {
     .service-photo-placeholder { aspect-ratio: 4 / 3; }
 }
+
+
+/* Alisados: formato cuadrado para mostrar el largo completo del cabello sin recortarlo */
+#alisados .service-photo-placeholder {
+    aspect-ratio: 1 / 1;
+}
+#alisados .service-photo-placeholder img {
+    object-position: center center;
+}
+@media (max-width: 560px) {
+    #alisados .service-photo-placeholder { aspect-ratio: 1 / 1; }
+}
