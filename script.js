@@ -288,6 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Fecha preferida: " + dateLabel,
             "",
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
+            "",
             "¡Muchas gracias!"
         ].join("\n");
 
