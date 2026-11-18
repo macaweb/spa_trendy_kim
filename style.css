@@ -1353,3 +1353,47 @@ html {
         transform: none !important;
     }
 }
+
+
+/* CTA de agenda: interacción visible y consistente en móvil y escritorio */
+.hero-booking-button {
+    position: relative;
+    min-height: 54px;
+    padding: 0 27px;
+    gap: 18px;
+    border: 1px solid var(--rose-dark);
+    border-radius: 4px;
+    background: linear-gradient(115deg, #211F20 0%, #393033 100%);
+    box-shadow: 0 7px 18px rgba(33,31,32,.18);
+    transform: translateZ(0);
+    will-change: transform;
+    transition: transform .28s cubic-bezier(.2,.8,.2,1),
+        box-shadow .28s ease, background .25s ease, border-color .25s ease;
+}
+.hero-booking-button:hover,
+.hero-booking-button:focus-visible {
+    transform: translateY(-4px) scale(1.07);
+    background: linear-gradient(115deg, #986774 0%, #B98591 100%);
+    border-color: #986774;
+    box-shadow: 0 13px 27px rgba(152,103,116,.34);
+}
+.hero-booking-button.is-pressed {
+    animation: tk-cta-tap .42s cubic-bezier(.2,.8,.2,1) both;
+    background: linear-gradient(115deg, #986774 0%, #D094A5 100%);
+    border-color: #986774;
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(152,103,116,.35);
+}
+@keyframes tk-cta-tap {
+    0% { transform: scale(1); }
+    38% { transform: scale(1.12); }
+    70% { transform: scale(.97); }
+    100% { transform: scale(1.035); }
+}
+@media (hover: none) {
+    .hero-booking-button:hover { transform: none; }
+    .hero-booking-button:active { transform: scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-booking-button.is-pressed { animation: none !important; }
+}
