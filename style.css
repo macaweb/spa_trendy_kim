@@ -1950,3 +1950,22 @@ html {
         margin-top: 24px;
     }
 }
+
+
+/* Separación más clara entre cada servicio del catálogo, sin ampliar el espacio entre secciones */
+.catalog-grid {
+    column-gap: clamp(30px, 4vw, 46px);
+    row-gap: clamp(42px, 5vw, 58px);
+}
+.grupo-servicios .service-photo-placeholder {
+    margin-bottom: 20px;
+}
+@media (max-width: 560px) {
+    .catalog-grid {
+        column-gap: 0;
+        row-gap: 38px;
+    }
+    .grupo-servicios .service-photo-placeholder {
+        margin-bottom: 18px;
+    }
+}
