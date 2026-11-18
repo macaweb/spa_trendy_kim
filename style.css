@@ -2096,11 +2096,17 @@ span.flatpickr-weekday {
 }
 
 
-/* Ajustes finales de interacción: conservar la paleta y destacar la solicitud */
+/* Solicitar mi cita: negro en reposo y fucsia al interactuar */
 .booking-submit,
+.booking-submit:visited {
+    background: #171717 !important;
+    border-color: #171717 !important;
+    color: #fff !important;
+}
 .booking-submit:hover,
 .booking-submit:focus,
-.booking-submit:focus-visible {
+.booking-submit:focus-visible,
+.booking-submit:active {
     background: #d63384 !important;
     border-color: #d63384 !important;
     color: #fff !important;
@@ -2110,8 +2116,6 @@ span.flatpickr-weekday {
     box-shadow: 0 8px 22px rgba(214,51,132,.28);
 }
 .booking-submit:active {
-    background: #b72a70 !important;
-    border-color: #b72a70 !important;
     transform: scale(1.055) !important;
     box-shadow: 0 3px 12px rgba(183,42,112,.25);
 }
