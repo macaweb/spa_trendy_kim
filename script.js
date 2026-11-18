@@ -226,14 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
             groupedServices.get(item.title).push(item);
         });
-        const boldHeading = value => {
-            const normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const bold = "𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙";
-            return [...value].map(character => {
-                const index = normal.indexOf(character);
-                return index >= 0 ? bold[index] : character;
-            }).join("");
-        };
+        // Texto normal para evitar caracteres incompatibles en WhatsApp.
+        const boldHeading = value => value;
 
         const serviceLines = [];
         groupedServices.forEach((items, category) => {
@@ -269,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "",
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
-        ].join("\\n");
+        ].join("\n");
 
         whatsappMessageInput.value = message;
         // Solo se envía el mensaje completo a wa.me.
