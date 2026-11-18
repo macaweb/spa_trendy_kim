@@ -203,6 +203,25 @@ document.addEventListener("DOMContentLoaded", () => {
         window.open("https://wa.me/573172326970?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
     });
 
+
+    // Cierra el menú de categorías al elegir una sección y corrige el acceso a Inicio.
+    document.querySelectorAll(".nav-dropdown-menu a[href^='#']").forEach(link => {
+        link.addEventListener("click", () => {
+            const dropdown = link.closest(".nav-dropdown");
+            if (dropdown) dropdown.removeAttribute("open");
+        });
+    });
+
+    document.querySelectorAll("a[href='#inicio']").forEach(link => {
+        link.addEventListener("click", event => {
+            event.preventDefault();
+            const dropdown = document.querySelector(".nav-dropdown");
+            if (dropdown) dropdown.removeAttribute("open");
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    });
+
     // Aparición progresiva de secciones al desplazarse por la página.
     const motionTargets = document.querySelectorAll(
         ".intro-strip, .booking-intro, .section-heading, .category-section-heading, .grupo-servicios, .garantia-section, .contacto-section, .catalog-footer"
