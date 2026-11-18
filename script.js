@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const selection = new Map();
+    const selectionStorageKey = "spaTrendyKimSelectionV1";
     const lotusIcon = '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39c-8-4-13-11-13-19 6 1 11 5 13 12 2-7 7-11 13-12 0 8-5 15-13 19Z"/><path d="M24 39c-4-8-4-17 0-25 4 8 4 17 0 25Z"/><path d="M24 39C14 39 7 34 4 26c8-1 15 3 20 13Zm0 0c10 0 17-5 20-13-8-1-15 3-20 13Z"/></svg>';
     const floating = document.createElement("button");
     floating.type = "button";
@@ -113,6 +114,35 @@ document.addEventListener("DOMContentLoaded", () => {
         return { id: row.dataset.serviceId, title, name, priceText, amount };
     }
 
+    // Guarda únicamente los servicios elegidos para recuperarlos si se recarga la página.
+    function saveSelection() {
+        try {
+            localStorage.setItem(selectionStorageKey, JSON.stringify([...selection.keys()]));
+        } catch (error) {
+            console.warn("No fue posible guardar la selección en este navegador.", error);
+        }
+    }
+
+    function restoreSelection() {
+        try {
+            const savedIds = JSON.parse(localStorage.getItem(selectionStorageKey) || "[]");
+            if (!Array.isArray(savedIds)) return;
+            savedIds.forEach(id => {
+                const row = serviceRows.find(item => item.dataset.serviceId === String(id));
+                if (!row) return;
+                const item = getRowData(row);
+                selection.set(item.id, item);
+                const button = row.querySelector(".service-add-button");
+                if (button) {
+                    button.textContent = "✓ Añadido";
+                    button.setAttribute("aria-pressed", "true");
+                }
+            });
+        } catch (error) {
+            console.warn("No fue posible recuperar la selección guardada.", error);
+        }
+    }
+
     function renderSelection() {
         count.textContent = String(selection.size);
         floating.hidden = selection.size === 0;
@@ -143,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const row = document.querySelector('.servicio-item[data-service-id="' + item.id + '"]');
                 const button = row?.querySelector(".service-add-button");
                 if (button) { button.textContent = "Agregar"; button.setAttribute("aria-pressed", "false"); }
+                saveSelection();
                 renderSelection();
             });
             line.append(description, price, remove);
@@ -170,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
             button.textContent = "✓ Añadido";
             button.setAttribute("aria-pressed", "true");
         }
+        saveSelection();
         renderSelection();
     });
 
@@ -250,22 +282,21 @@ document.addEventListener("DOMContentLoaded", () => {
             "Solicito confirmar disponibilidad para esta fecha, jornada y hora.",
             "¡Muchas gracias!"
         ].join("\n");
-        const whatsappWindow = window.open(
-            "https://wa.me/573172326970?text=" + encodeURIComponent(message),
-            "_blank",
-            "noopener,noreferrer"
-        );
-        // Cada solicitud corresponde a una sola persona. Al abrir WhatsApp,
-        // dejamos el formulario limpio para que la siguiente persona empiece desde cero.
-        if (whatsappWindow) {
-            selection.clear();
-            event.currentTarget.reset();
-            timeSelect.innerHTML = '<option value="">Primero selecciona una jornada</option>';
-            timeSelect.disabled = true;
-            renderSelection();
-        } else {
-            alert("Permite las ventanas emergentes para abrir WhatsApp y enviar tu solicitud.");
-        }
+        const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
+
+        // Abrimos WhatsApp en otra pestaña sin depender del valor que devuelve window.open
+        // cuando se usan las opciones noopener/noreferrer.
+        const whatsappLink = document.createElement("a");
+        whatsappLink.href = whatsappUrl;
+        whatsappLink.target = "_blank";
+        whatsappLink.rel = "noopener noreferrer";
+        whatsappLink.style.display = "none";
+        document.body.appendChild(whatsappLink);
+        whatsappLink.click();
+        whatsappLink.remove();
+
+        // Conservamos la selección guardada: si la página se recarga o se pierde la conexión,
+        // los servicios elegidos seguirán disponibles al volver a abrirla.
     });
 
 
@@ -320,5 +351,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    restoreSelection();
     renderSelection();
 });
