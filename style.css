@@ -1507,3 +1507,23 @@ html {
         padding: 5px 1px;
     }
 }
+
+
+/* La agenda llama suavemente la atención con un movimiento horizontal */
+.hero-booking-button {
+    position: relative;
+    animation: tk-booking-invite 2.8s ease-in-out infinite;
+}
+.hero-booking-button:hover,
+.hero-booking-button:focus-visible {
+    animation-play-state: paused;
+}
+@keyframes tk-booking-invite {
+    0%, 68%, 100% { left: 0; }
+    76% { left: 4px; }
+    84% { left: -2px; }
+    92% { left: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-booking-button { animation: none !important; }
+}
