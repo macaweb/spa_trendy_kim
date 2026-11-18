@@ -2019,3 +2019,78 @@ html {
         color: #fff;
     }
 }
+
+
+/* Calendario personalizado Flatpickr con la paleta de Spa Trendy Kim */
+.appointment-form input[name="date"],
+.appointment-form input.flatpickr-input {
+    color-scheme: light;
+    background: var(--ivory);
+    color: var(--black);
+    border: 1px solid rgba(185,133,145,.65);
+    cursor: pointer;
+}
+.appointment-form input[name="date"]:focus,
+.appointment-form input.flatpickr-input:focus {
+    border-color: #d63384;
+    outline: 2px solid rgba(214,51,132,.16);
+    outline-offset: 2px;
+}
+.flatpickr-calendar {
+    border: 1px solid rgba(185,133,145,.35) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 32px rgba(57,35,43,.14) !important;
+    font-family: 'DM Sans', sans-serif !important;
+    overflow: hidden;
+}
+.flatpickr-months,
+.flatpickr-weekdays {
+    background: var(--pink-light) !important;
+}
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year,
+span.flatpickr-weekday {
+    color: var(--black) !important;
+    fill: var(--black) !important;
+}
+.flatpickr-day {
+    color: var(--black);
+    border-radius: 9px !important;
+}
+.flatpickr-day:hover,
+.flatpickr-day:focus {
+    background: var(--pink) !important;
+    border-color: var(--pink) !important;
+}
+.flatpickr-day.today {
+    border-color: #d66b91 !important;
+}
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: #d63384 !important;
+    border-color: #d63384 !important;
+    color: #fff !important;
+}
+.flatpickr-day.disabled,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: #c7bfc0 !important;
+}
+.flatpickr-prev-month,
+.flatpickr-next-month {
+    color: #b98591 !important;
+    fill: #b98591 !important;
+}
+.flatpickr-prev-month:hover svg,
+.flatpickr-next-month:hover svg {
+    fill: #d63384 !important;
+}
+.flatpickr-calendar.arrowTop:before,
+.flatpickr-calendar.arrowTop:after {
+    border-bottom-color: var(--pink-light) !important;
+}
