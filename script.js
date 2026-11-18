@@ -204,23 +204,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const appointmentForm = panel.querySelector(".appointment-form");
     const submitButton = appointmentForm.querySelector(".booking-submit");
     submitButton.type = "button";
+
+    // Procesa la solicitud directamente desde el toque, sin depender de la
+    // validación automática del navegador ni de un campo de hora específico.
     submitButton.addEventListener("click", () => {
-        if (!appointmentForm.reportValidity()) return;
-        if (!selection.size) {
-            alert("Primero elige al menos un servicio del catálogo.");
-            closePanel();
-            document.querySelector("#unas")?.scrollIntoView({ behavior: "smooth" });
+        const nameInput = appointmentForm.elements.namedItem("name");
+        const phoneInput = appointmentForm.elements.namedItem("phone");
+        const shiftInput = appointmentForm.querySelector('input[name="shift"]:checked');
+        const dateValue = appointmentForm.elements.namedItem("date").value;
+
+        const missing = [];
+        if (!nameInput.value.trim()) missing.push("tu nombre");
+        if (!phoneInput.value.trim()) missing.push("tu número de WhatsApp");
+        if (!shiftInput) missing.push("la jornada (mañana o tarde)");
+        if (!dateValue) missing.push("la fecha de la cita");
+        if (!selection.size) missing.push("al menos un servicio");
+
+        if (missing.length) {
+            alert("Para enviar tu solicitud, completa: " + missing.join(", ") + ".");
             return;
         }
-        const form = new FormData(appointmentForm);
-        const date = new Date(form.get("date") + "T12:00:00");
+
+        const date = new Date(dateValue + "T12:00:00");
         const dateLabel = date.toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
         const groupedServices = new Map();
         selection.forEach(item => {
             if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
             groupedServices.get(item.title).push(item);
         });
-        // Encabezados con caracteres Unicode en negrita para evitar asteriscos visibles en WhatsApp.
         const boldHeading = value => {
             const normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const bold = "𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙";
@@ -257,20 +268,27 @@ document.addEventListener("DOMContentLoaded", () => {
             totalLine,
             "",
             boldHeading("DATOS PARA LA CITA") + ":",
-            "Nombre: " + form.get("name"),
-            "WhatsApp: " + form.get("phone"),
-            "Jornada preferida: " + form.get("shift"),
+            "Nombre: " + nameInput.value.trim(),
+            "WhatsApp: " + phoneInput.value.trim(),
+            "Jornada preferida: " + shiftInput.value,
             "Fecha preferida: " + dateLabel,
             "",
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
-        ].join("\n");
+        ].join("\\n");
+
         const whatsappUrl = "https://api.whatsapp.com/send?phone=573172326970&text=" + encodeURIComponent(message);
 
-        // Abre el envío de WhatsApp directamente desde el toque del usuario.
-        window.location.assign(whatsappUrl);
-
-        // Conservamos la selección guardada para que siga disponible al volver al catálogo.
+        // Un enlace real, activado dentro del gesto del usuario, funciona mejor
+        // en navegadores móviles que una navegación programática de la ventana.
+        const whatsappLink = document.createElement("a");
+        whatsappLink.href = whatsappUrl;
+        whatsappLink.target = "_blank";
+        whatsappLink.rel = "noopener noreferrer";
+        whatsappLink.style.display = "none";
+        document.body.appendChild(whatsappLink);
+        whatsappLink.click();
+        whatsappLink.remove();
     });
 
 
