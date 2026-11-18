@@ -208,7 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Procesa la solicitud directamente desde el toque, sin depender de la
     // validación automática del navegador ni de un campo de hora específico.
     submitButton.addEventListener("click", () => {
-        alert("El botón sí está ejecutando el código. Ahora revisaré la apertura de WhatsApp.");
         const nameInput = appointmentForm.elements.namedItem("name");
         const phoneInput = appointmentForm.elements.namedItem("phone");
         const shiftInput = appointmentForm.querySelector('input[name="shift"]:checked');
@@ -278,18 +277,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "¡Muchas gracias!"
         ].join("\\n");
 
-        const whatsappUrl = "https://api.whatsapp.com/send?phone=573172326970&text=" + encodeURIComponent(message);
+        const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
 
-        // Un enlace real, activado dentro del gesto del usuario, funciona mejor
-        // en navegadores móviles que una navegación programática de la ventana.
-        const whatsappLink = document.createElement("a");
-        whatsappLink.href = whatsappUrl;
-        whatsappLink.target = "_blank";
-        whatsappLink.rel = "noopener noreferrer";
-        whatsappLink.style.display = "none";
-        document.body.appendChild(whatsappLink);
-        whatsappLink.click();
-        whatsappLink.remove();
+        // Abrir en la misma pestaña evita que el navegador bloquee una ventana
+        // nueva creada mediante un clic programático.
+        window.location.assign(whatsappUrl);
     });
 
 
