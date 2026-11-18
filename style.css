@@ -548,3 +548,57 @@ body.booking-open { overflow: hidden; }
 }
 
 .selection-fab[hidden] { display: none; }
+
+
+/* Ajustes solicitados: foto limpia y filas del catálogo alineadas */
+.photo-stamp { display: none !important; }
+
+.servicio-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(76px, auto) 82px;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 5px;
+}
+.servicio-item > span:first-child {
+    min-width: 0;
+    line-height: 1.4;
+}
+.servicio-item .precio {
+    justify-self: end;
+    min-width: 76px;
+    text-align: right;
+    white-space: nowrap;
+}
+.servicio-item .service-add-button {
+    width: 82px;
+    min-width: 82px;
+    justify-self: end;
+    white-space: nowrap;
+}
+@media (max-width: 560px) {
+    .servicio-item {
+        grid-template-columns: minmax(0, 1fr) minmax(70px, auto) 78px;
+        column-gap: 8px;
+        padding: 12px 0;
+    }
+    .servicio-item .precio {
+        min-width: 70px;
+        font-size: .76rem;
+    }
+    .servicio-item .service-add-button {
+        width: 78px;
+        min-width: 78px;
+        min-height: 34px;
+        padding: 7px 6px;
+        font-size: .65rem;
+    }
+}
+@media (max-width: 360px) {
+    .servicio-item {
+        grid-template-columns: minmax(0, 1fr) 68px 72px;
+        column-gap: 6px;
+    }
+    .servicio-item .precio { min-width: 68px; font-size: .7rem; }
+    .servicio-item .service-add-button { width: 72px; min-width: 72px; font-size: .62rem; }
+}
