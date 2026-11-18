@@ -1283,3 +1283,32 @@ html {
     }
     .contacto-visitanos { padding-left: 4px; padding-right: 4px; }
 }
+
+
+/* Logos junto a cada canal de contacto */
+.contacto-link-heading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.contacto-icon {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 19px;
+    display: block;
+}
+.whatsapp-icon {
+    fill: none;
+    stroke: #269B55;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.instagram-icon {
+    fill: none;
+    stroke: #B83E83;
+    stroke-width: 1.8;
+}
+.instagram-icon .instagram-dot { fill: #B83E83; stroke: none; }
+.facebook-icon { fill: #1877F2; }
