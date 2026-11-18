@@ -68,11 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <label><input type="radio" name="shift" value="Tarde" required><span>Tarde</span></label>
                     </div>
                 </fieldset>
-                <label>¿Qué hora es preferible para ti?
-                    <select name="time" required disabled>
-                        <option value="">Primero selecciona una jornada</option>
-                    </select>
-                </label>
                 <label>Elige la fecha de tu cita<input name="date" type="date" required></label>
                 <p class="booking-note">Tu solicitud se enviará por WhatsApp. La cita quedará pendiente de confirmación.</p>
                 <button class="booking-submit" type="submit">Solicitar mi cita</button>
@@ -264,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Jornada preferida: " + form.get("shift"),
             "Fecha preferida: " + dateLabel,
             "",
-            "Solicito confirmar disponibilidad para esta fecha y jornada."
+            "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
         ].join("\n");
         const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
