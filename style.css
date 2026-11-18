@@ -1698,3 +1698,53 @@ html {
         flex-basis: 19px;
     }
 }
+
+
+/* Ajuste final del bloque de contacto: enlaces alineados como en AH Parrilla */
+.contacto-section .contacto-pie-foto {
+    align-items: flex-start !important;
+    width: fit-content !important;
+    max-width: calc(100% - 28px) !important;
+    margin: 26px auto 0 !important;
+    gap: 12px !important;
+}
+.contacto-section .contacto-pie-foto .contacto-redes-pie {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: auto !important;
+    gap: 12px !important;
+}
+.contacto-section .contacto-pie-foto .contacto-link {
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    text-align: left !important;
+}
+.contacto-section .contacto-pie-foto .contacto-icon {
+    width: 19px !important;
+    height: 19px !important;
+    flex: 0 0 19px !important;
+}
+.contacto-section .contacto-pie-foto .whatsapp-icon { color: #35c979; }
+.contacto-section .contacto-pie-foto .instagram-icon { color: #e66a9c; }
+.contacto-section .contacto-pie-foto .facebook-icon { color: #5795f5; }
+.contacto-section .contacto-pie-foto .ubicacion-icon { color: var(--rose-dark); }
+.contacto-section .contacto-pie-foto .contacto-direccion-pie {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    max-width: 100%;
+    margin: 2px 0 0 !important;
+    text-align: left !important;
+    color: #8a8080;
+    font-size: .7rem;
+    line-height: 1.45;
+}
+.contacto-section .contacto-pie-foto .contacto-direccion-pie span {
+    display: inline;
+}
+@media (max-width: 560px) {
+    .contacto-section .contacto-pie-foto { margin-top: 22px !important; }
+    .contacto-section .contacto-pie-foto .contacto-link > span { font-size: .75rem; }
+    .contacto-section .contacto-pie-foto .contacto-direccion-pie { font-size: .68rem; }
+}
