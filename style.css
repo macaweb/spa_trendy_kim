@@ -529,10 +529,12 @@ body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .selection-total strong { color: var(--rose-dark); text-align: right; }
 .appointment-form { display: grid; gap: 15px; margin-top: 20px; }
 .appointment-form > label { display: grid; gap: 7px; color: #51494a; font-size: .72rem; font-weight: 600; }
-.appointment-form input[type="text"], .appointment-form input[type="tel"], .appointment-form input[type="date"] {
+.appointment-form input[type="text"], .appointment-form input[type="tel"], .appointment-form input[type="date"],
+.appointment-form select {
     width: 100%; min-height: 45px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 3px;
     background: white; color: var(--black); font: 400 .8rem 'DM Sans',sans-serif;
 }
+.appointment-form select:disabled { color: #8a8182; background: #f7f3f2; cursor: not-allowed; }
 .appointment-form fieldset { border: 0; }
 .appointment-form legend { margin-bottom: 9px; color: #51494a; font-size: .72rem; font-weight: 600; }
 .shift-options { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
