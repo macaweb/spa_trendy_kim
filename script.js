@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </fieldset>
                 <label>Elige la fecha de tu cita<input name="date" type="date" required></label>
                 <p class="booking-note">Tu solicitud se enviará por WhatsApp. La cita quedará pendiente de confirmación.</p>
-                <button class="booking-submit" type="submit">Solicitar mi cita <span aria-hidden="true">↗</span></button>
+                <button class="booking-submit" type="submit">Solicitar mi cita</button>
             </form>
         </section>`;
     document.body.appendChild(panel);
@@ -159,19 +159,46 @@ document.addEventListener("DOMContentLoaded", () => {
         const form = new FormData(event.currentTarget);
         const date = new Date(form.get("date") + "T12:00:00");
         const dateLabel = date.toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-        const items = [...selection.values()].map(item => "- " + item.title + ": " + item.name + " (" + item.priceText + ")").join("\n");
+        const groupedServices = new Map();
+        selection.forEach(item => {
+            if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
+            groupedServices.get(item.title).push(item);
+        });
+        const serviceLines = [];
+        groupedServices.forEach((items, category) => {
+            serviceLines.push("*" + category.toLocaleUpperCase("es-CO") + "*");
+            items.forEach((item, index) => {
+                serviceLines.push((index + 1) + ". " + item.name);
+                serviceLines.push("   Precio: " + item.priceText);
+            });
+            serviceLines.push("");
+        });
+        const knownPrices = [...selection.values()].filter(item => item.amount > 0);
+        const hasPendingPrices = [...selection.values()].some(item => item.amount === 0);
+        const estimatedTotal = knownPrices.reduce((sum, item) => sum + item.amount, 0);
+        const totalLine = "Subtotal de precios publicados: $" +
+            estimatedTotal.toLocaleString("es-CO") + " COP" +
+            (hasPendingPrices ? " + servicios por cotizar" : "");
         const message = [
-            "Hola, quiero solicitar una cita en Spa Trendy Kim.",
+            "*SPA TRENDY KIM*",
+            "*SOLICITUD DE CITA*",
+            "━━━━━━━━━━━━━━━━━━",
             "",
-            "Servicios elegidos:",
-            items,
+            "*SERVICIOS QUE DESEO*",
             "",
+            ...serviceLines,
+            "━━━━━━━━━━━━━━━━━━",
+            "*" + (hasPendingPrices ? "SUBTOTAL" : "TOTAL ESTIMADO") + "*",
+            totalLine,
+            "",
+            "*DATOS PARA LA CITA*",
             "Nombre: " + form.get("name"),
             "WhatsApp: " + form.get("phone"),
             "Jornada preferida: " + form.get("shift"),
             "Fecha preferida: " + dateLabel,
             "",
-            "Quedo pendiente de confirmación. ¡Gracias!"
+            "Solicito confirmar disponibilidad para esta fecha y jornada.",
+            "¡Muchas gracias!"
         ].join("\n");
         window.open("https://wa.me/573172326970?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
     });
