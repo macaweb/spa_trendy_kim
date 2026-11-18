@@ -286,16 +286,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ].join("\n");
         const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
 
-        // Abrimos WhatsApp en otra pestaña sin depender del valor que devuelve window.open
-        // cuando se usan las opciones noopener/noreferrer.
-        const whatsappLink = document.createElement("a");
-        whatsappLink.href = whatsappUrl;
-        whatsappLink.target = "_blank";
-        whatsappLink.rel = "noopener noreferrer";
-        whatsappLink.style.display = "none";
-        document.body.appendChild(whatsappLink);
-        whatsappLink.click();
-        whatsappLink.remove();
+        // Redirigimos la pestaña actual para evitar que el navegador bloquee la apertura.
+        window.location.href = whatsappUrl;
 
         // Conservamos la selección guardada: si la página se recarga o se pierde la conexión,
         // los servicios elegidos seguirán disponibles al volver a abrirla.
