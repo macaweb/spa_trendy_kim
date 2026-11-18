@@ -602,3 +602,101 @@ body.booking-open { overflow: hidden; }
     .servicio-item .precio { min-width: 68px; font-size: .7rem; }
     .servicio-item .service-add-button { width: 72px; min-width: 72px; font-size: .62rem; }
 }
+
+
+/* Movimiento sutil y microinteracciones */
+@keyframes tk-fade-up {
+    from { opacity: 0; transform: translate3d(0, 22px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes tk-soft-appear {
+    from { opacity: 0; transform: scale(.975); }
+    to { opacity: 1; transform: scale(1); }
+}
+.hero-copy { animation: tk-fade-up .8s cubic-bezier(.2,.7,.2,1) both; }
+.hero-photo-wrap { animation: tk-soft-appear 1s .12s cubic-bezier(.2,.7,.2,1) both; }
+.hero-watermark { animation: tk-watermark-drift 12s ease-in-out infinite alternate; }
+@keyframes tk-watermark-drift {
+    from { transform: translate3d(0, 0, 0) rotate(-3deg); }
+    to { transform: translate3d(-14px, -9px, 0) rotate(2deg); }
+}
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition: opacity .72s ease, transform .72s cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-on-scroll.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+.grupo-servicios.reveal-on-scroll { transition-duration: .78s; }
+.service-photo-placeholder { overflow: hidden; transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease; }
+.grupo-servicios:hover .service-photo-placeholder {
+    transform: translateY(-3px);
+    border-color: rgba(185,133,145,.8);
+    box-shadow: 0 14px 28px rgba(50,36,37,.08);
+}
+.service-photo-placeholder span { transition: background .3s ease, transform .3s ease; }
+.grupo-servicios:hover .service-photo-placeholder span { transform: translateY(-2px); background: rgba(255,253,248,.9); }
+.service-add-button {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    min-width: 91px;
+    min-height: 34px;
+    border: 1px solid var(--champagne);
+    border-radius: 3px;
+    background: var(--ivory);
+    color: var(--black);
+    font-size: .69rem;
+    font-weight: 600;
+    letter-spacing: .015em;
+    cursor: pointer;
+    transition: transform .22s cubic-bezier(.2,.8,.2,1), background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.service-add-button::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: var(--black);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .28s ease;
+}
+.service-add-button:hover {
+    transform: translateY(-2px);
+    border-color: var(--black);
+    color: var(--ivory);
+    box-shadow: 0 5px 13px rgba(33,31,32,.13);
+}
+.service-add-button:hover::after { transform: scaleX(1); }
+.service-add-button:active { transform: scale(.95); }
+.service-add-button[aria-pressed="true"] {
+    border-color: var(--rose-dark);
+    background: var(--rose-dark);
+    color: white;
+    box-shadow: 0 4px 12px rgba(152,103,116,.2);
+    animation: tk-added-pop .32s ease both;
+}
+.service-add-button[aria-pressed="true"]::after { display: none; }
+@keyframes tk-added-pop {
+    0% { transform: scale(.92); }
+    65% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+.selection-fab { transition: transform .25s ease, box-shadow .25s ease; }
+.selection-fab:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(33,31,32,.2); }
+.selection-fab:active { transform: scale(.96); }
+.button, .header-cta, .booking-browse-button, .hero-booking-button, .contacto-link {
+    transition-timing-function: cubic-bezier(.2,.7,.2,1);
+}
+.button:active, .booking-browse-button:active, .hero-booking-button:active { transform: translateY(1px) scale(.98); }
+@media (max-width: 760px) {
+    .service-add-button { min-height: 36px; }
+    .grupo-servicios:hover .service-photo-placeholder { transform: none; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-copy, .hero-photo-wrap, .hero-watermark { animation: none !important; }
+    .reveal-on-scroll { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .service-add-button[aria-pressed="true"] { animation: none !important; }
+    *, *::before, *::after { scroll-behavior: auto !important; }
+}
