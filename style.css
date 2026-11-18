@@ -1188,3 +1188,98 @@ html {
         zoom: 1;
     }
 }
+
+
+/* Panel de cita: tamaño constante y sin ampliaciones al escribir */
+.appointment-form input[type="text"],
+.appointment-form input[type="tel"],
+.appointment-form input[type="date"],
+.booking-panel input,
+.booking-panel select,
+.booking-panel textarea {
+    font-size: 16px !important;
+    line-height: 1.35;
+    transform: none !important;
+    zoom: 1 !important;
+}
+.booking-panel,
+.booking-panel * {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+.booking-panel {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+    contain: layout paint;
+}
+.booking-overlay.is-open .booking-panel {
+    transform: none !important;
+}
+.booking-panel input:focus,
+.booking-panel select:focus,
+.booking-panel textarea:focus {
+    font-size: 16px !important;
+    transform: none !important;
+    outline-offset: 1px;
+}
+.contacto-visitanos {
+    max-width: 570px;
+    margin: 22px auto 0;
+    padding: 16px 8px 0;
+    border-top: 1px solid rgba(216,198,181,.8);
+}
+.contacto-visitanos .contacto-direccion {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+    color: #625b5c;
+    font-size: .82rem;
+    line-height: 1.6;
+    text-align: center;
+    font-style: normal;
+}
+@media (max-width: 560px) {
+    .booking-overlay,
+    .booking-overlay.is-open {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        display: block;
+        transform: none !important;
+    }
+    .booking-panel,
+    .booking-overlay.is-open .booking-panel {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        margin: 0;
+        padding: max(22px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        transform: none !important;
+        transition: none !important;
+    }
+    .booking-panel input,
+    .booking-panel select,
+    .booking-panel textarea,
+    .appointment-form input[type="text"],
+    .appointment-form input[type="tel"],
+    .appointment-form input[type="date"] {
+        width: 100%;
+        min-height: 48px;
+        font-size: 16px !important;
+        transform: none !important;
+        zoom: 1 !important;
+    }
+    .contacto-visitanos { padding-left: 4px; padding-right: 4px; }
+}
