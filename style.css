@@ -1977,3 +1977,45 @@ html {
     font-weight: 600;
     padding: 0 .12em;
 }
+
+
+/* Calendario y acción de cita con la paleta rosa de Spa Trendy Kim */
+.appointment-form input[type="date"] {
+    color-scheme: light;
+    accent-color: #d63384;
+    border-color: rgba(185,133,145,.65);
+    background: var(--ivory);
+    color: var(--black);
+}
+.appointment-form input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: .82;
+    filter: invert(43%) sepia(24%) saturate(1045%) hue-rotate(286deg) brightness(88%) contrast(86%);
+}
+.appointment-form input[type="date"]:focus {
+    border-color: #d63384;
+    outline: 2px solid rgba(214,51,132,.16);
+    outline-offset: 2px;
+}
+.booking-submit {
+    background: var(--black);
+    transition: background .2s ease, color .2s ease, transform .16s ease, box-shadow .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.booking-submit:hover,
+.booking-submit:focus-visible {
+    background: #d63384;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(214,51,132,.2);
+}
+.booking-submit:active {
+    background: #b72a70;
+    transform: scale(.985);
+    box-shadow: 0 2px 8px rgba(183,42,112,.22);
+}
+@media (hover: none) {
+    .booking-submit:focus {
+        background: #d63384;
+        color: #fff;
+    }
+}
