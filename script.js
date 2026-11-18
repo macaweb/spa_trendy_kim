@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Nombre: " + nameInput.value.trim(),
             "WhatsApp: " + phoneInput.value.trim(),
             "Jornada preferida: " + shiftInput.value,
-            boldHeading("Fecha preferida:") + " " + boldHeading(dateLabel),
+            "Fecha preferida: " + dateLabel,
             "",
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
