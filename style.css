@@ -1796,3 +1796,58 @@ html {
         font-size: .7rem !important;
     }
 }
+
+
+/* Contactos equilibrados: redes a los lados y ubicación centrada debajo */
+.contacto-section .contacto-pie-foto {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    width: min(100%, 430px) !important;
+    max-width: calc(100% - 32px) !important;
+    margin: 26px auto 0 !important;
+    gap: 13px !important;
+}
+.contacto-section .contacto-pie-foto .contacto-redes-pie {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 16px !important;
+}
+.contacto-section .contacto-pie-foto .contacto-link {
+    justify-content: center !important;
+    white-space: nowrap;
+}
+.contacto-section .contacto-pie-foto .contacto-direccion-pie {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    text-align: center !important;
+    gap: 8px !important;
+}
+.contacto-section .contacto-pie-foto .contacto-direccion-pie span {
+    text-align: center;
+}
+@media (max-width: 560px) {
+    .contacto-section .contacto-pie-foto {
+        width: min(100%, 360px) !important;
+        gap: 12px !important;
+    }
+    .contacto-section .contacto-pie-foto .contacto-redes-pie {
+        gap: 12px !important;
+    }
+    .contacto-section .contacto-pie-foto .contacto-link {
+        gap: 7px !important;
+        font-size: .72rem;
+    }
+    .contacto-section .contacto-pie-foto .contacto-direccion-pie {
+        font-size: .67rem !important;
+        line-height: 1.5;
+    }
+}
