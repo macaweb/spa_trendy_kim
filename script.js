@@ -149,7 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
         list.innerHTML = "";
         if (!selection.size) {
             list.innerHTML = '<p class="selection-empty">Aún no has elegido servicios. Vuelve al catálogo y toca “Agregar” en los que deseas.</p>';
-            total.hidden = true;
+            total.hidden = false;
+            total.querySelector("span").textContent = "Total estimado";
+            totalValue.textContent = "$0 COP";
             return;
         }
         selection.forEach(item => {
