@@ -1880,3 +1880,21 @@ html {
 @media (prefers-reduced-motion: reduce) {
     .service-photo-placeholder img { transition: none; }
 }
+
+
+/* Encuadre uniforme: imágenes centradas y con más espacio para mostrar el detalle principal */
+.service-photo-placeholder {
+    aspect-ratio: 4 / 3;
+}
+.service-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+#depilacion-hilo .service-photo-placeholder img {
+    object-position: center center;
+}
+@media (max-width: 560px) {
+    .service-photo-placeholder { aspect-ratio: 4 / 3; }
+}
