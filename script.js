@@ -286,11 +286,16 @@ document.addEventListener("DOMContentLoaded", () => {
         ].join("\n");
         const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
 
-        // Redirigimos la pestaña actual para evitar que el navegador bloquee la apertura.
-        window.location.href = whatsappUrl;
+        // Abrimos WhatsApp desde la acción directa del usuario para evitar bloqueos
+        // de ventanas emergentes. Si el navegador lo bloquea, usamos la pestaña actual.
+        const whatsappWindow = window.open(whatsappUrl, "_blank");
+        if (whatsappWindow) {
+            whatsappWindow.opener = null;
+        } else {
+            window.location.assign(whatsappUrl);
+        }
 
-        // Conservamos la selección guardada: si la página se recarga o se pierde la conexión,
-        // los servicios elegidos seguirán disponibles al volver a abrirla.
+        // Conservamos la selección guardada para que siga disponible al volver al catálogo.
     });
 
 
