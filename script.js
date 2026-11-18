@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "",
             "Solicito confirmar disponibilidad para esta fecha y jornada.",
             "¡Muchas gracias!"
-        ].join("\\n");
+        ].join("\n");
 
         const whatsappUrl = "https://wa.me/573172326970?text=" + encodeURIComponent(message);
 
