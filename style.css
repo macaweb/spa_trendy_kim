@@ -546,3 +546,5 @@ body.booking-open { overflow: hidden; }
     .selection-line { grid-template-columns: minmax(0,1fr) auto; }
     .selection-remove { grid-column: 1 / -1; justify-self: end; margin-top: -5px; }
 }
+
+.selection-fab[hidden] { display: none; }
