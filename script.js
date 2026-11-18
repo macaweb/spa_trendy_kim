@@ -204,9 +204,19 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
             groupedServices.get(item.title).push(item);
         });
+        // Encabezados con caracteres Unicode en negrita para evitar asteriscos visibles en WhatsApp.
+        const boldHeading = value => {
+            const normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const bold = "𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙";
+            return [...value].map(character => {
+                const index = normal.indexOf(character);
+                return index >= 0 ? bold[index] : character;
+            }).join("");
+        };
+
         const serviceLines = [];
         groupedServices.forEach((items, category) => {
-            serviceLines.push("*" + category.toLocaleUpperCase("es-CO") + "*");
+            serviceLines.push(boldHeading(category.toLocaleUpperCase("es-CO")) + ":");
             items.forEach(item => {
                 serviceLines.push(item.name);
                 serviceLines.push("Precio: " + item.priceText);
@@ -220,17 +230,17 @@ document.addEventListener("DOMContentLoaded", () => {
             estimatedTotal.toLocaleString("es-CO") + " COP" +
             (hasPendingPrices ? " + servicios por cotizar" : "");
         const message = [
-            "*SPA TRENDY KIM*",
-            "*SOLICITUD DE CITA*",
+            boldHeading("SPA TRENDY KIM"),
+            boldHeading("SOLICITUD DE CITA"),
             "",
-            "*SERVICIOS QUE DESEO*",
+            boldHeading("SERVICIOS QUE DESEO") + ":",
             "",
             ...serviceLines,
             "────────────",
-            "*" + (hasPendingPrices ? "SUBTOTAL" : "TOTAL ESTIMADO") + "*",
+            boldHeading(hasPendingPrices ? "SUBTOTAL" : "TOTAL ESTIMADO") + ":",
             totalLine,
             "",
-            "*DATOS PARA LA CITA*",
+            boldHeading("DATOS PARA LA CITA") + ":",
             "Nombre: " + form.get("name"),
             "WhatsApp: " + form.get("phone"),
             "Jornada preferida: " + form.get("shift"),
