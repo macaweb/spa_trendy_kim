@@ -250,6 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (whatsappWindow) {
             selection.clear();
             event.currentTarget.reset();
+            timeSelect.innerHTML = '<option value="">Primero selecciona una jornada</option>';
+            timeSelect.disabled = true;
             renderSelection();
         } else {
             alert("Permite las ventanas emergentes para abrir WhatsApp y enviar tu solicitud.");
