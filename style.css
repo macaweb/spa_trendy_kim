@@ -1765,3 +1765,34 @@ html {
         font-size: .78rem !important;
     }
 }
+
+
+/* Redes sociales compactas en una sola fila */
+.contacto-section .contacto-pie-foto {
+    gap: 10px !important;
+}
+.contacto-section .contacto-pie-foto .contacto-redes-pie {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 10px 20px !important;
+    width: auto !important;
+}
+.contacto-section .contacto-pie-foto .contacto-link {
+    gap: 7px !important;
+    padding: 2px 0 !important;
+    white-space: nowrap;
+}
+.contacto-section .contacto-pie-foto .contacto-direccion-pie {
+    margin-top: 3px !important;
+}
+@media (max-width: 560px) {
+    .contacto-section .contacto-pie-foto .contacto-redes-pie {
+        gap: 9px 14px !important;
+    }
+    .contacto-section .contacto-pie-foto .contacto-link > span {
+        font-size: .7rem !important;
+    }
+}
