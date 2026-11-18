@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function openPanel() {
         panel.classList.add("is-open");
         document.body.classList.add("booking-open");
-        panel.querySelector(".booking-close").focus();
+        panel.scrollTop = 0;
     }
     function closePanel() {
         panel.classList.remove("is-open");
