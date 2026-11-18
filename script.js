@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     floating.className = "selection-fab";
     floating.innerHTML = lotusIcon + '<span>Mi selección</span><b class="selection-count">0</b>';
     floating.setAttribute("aria-label", "Abrir mi selección");
+    floating.hidden = true;
     document.body.appendChild(floating);
 
     const panel = document.createElement("div");
@@ -74,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderSelection() {
         count.textContent = String(selection.size);
+        floating.hidden = selection.size === 0;
         list.innerHTML = "";
         if (!selection.size) {
             list.innerHTML = '<p class="selection-empty">Aún no has elegido servicios. Vuelve al catálogo y toca “Agregar” en los que deseas.</p>';
