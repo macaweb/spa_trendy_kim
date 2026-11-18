@@ -226,8 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
             groupedServices.get(item.title).push(item);
         });
-        // Encabezados en texto limpio, sin asteriscos ni caracteres Unicode especiales.
-        const boldHeading = value => value;
+        // Negrita nativa de WhatsApp, reservada para los encabezados importantes.
+        const boldHeading = value => "*" + value + "*";
 
         const serviceLines = [];
         groupedServices.forEach((items, category) => {
@@ -246,13 +246,13 @@ document.addEventListener("DOMContentLoaded", () => {
             (hasPendingPrices ? " + servicios por cotizar" : "");
         const message = [
             boldHeading("SPA TRENDY KIM"),
-            boldHeading("SOLICITUD DE CITA"),
+            "SOLICITUD DE CITA",
             "",
             boldHeading("SERVICIOS QUE DESEO") + ":",
             "",
             ...serviceLines,
             "────────────",
-            boldHeading(hasPendingPrices ? "SUBTOTAL" : "TOTAL ESTIMADO") + ":",
+            (hasPendingPrices ? "Subtotal" : "Total estimado") + ":",
             totalLine,
             "",
             boldHeading("DATOS PARA LA CITA") + ":",
