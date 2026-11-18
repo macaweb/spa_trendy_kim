@@ -164,8 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const remove = document.createElement("button");
             remove.type = "button";
             remove.className = "selection-remove";
-            remove.textContent = "Quitar";
-            remove.setAttribute("aria-label", "Quitar " + item.name);
+            remove.textContent = "Eliminar";
+            remove.setAttribute("aria-label", "Eliminar " + item.name);
             remove.addEventListener("click", () => {
                 selection.delete(item.id);
                 const row = document.querySelector('.servicio-item[data-service-id="' + item.id + '"]');
