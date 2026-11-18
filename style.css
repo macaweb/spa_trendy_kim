@@ -1969,3 +1969,11 @@ html {
         margin-bottom: 18px;
     }
 }
+
+
+/* Separador delicado para distinguir el género en los servicios */
+.gender-separator {
+    color: #d66b91;
+    font-weight: 600;
+    padding: 0 .12em;
+}
