@@ -1910,3 +1910,12 @@ html {
 @media (max-width: 560px) {
     #alisados .service-photo-placeholder { aspect-ratio: 1 / 1; }
 }
+
+/* Semipermanente: conservar completos los dedos y las manos en el encuadre */
+#unas-semi-permanente .service-photo-placeholder {
+    background: #fffdf8;
+}
+#unas-semi-permanente .service-photo-placeholder img {
+    object-fit: contain;
+    object-position: center center;
+}
