@@ -2180,3 +2180,43 @@ a[href]:active,
         transform: none !important;
     }
 }
+
+
+/* Corrección del botón "Agenda tu cita": sin parpadeo ni movimiento automático */
+.hero-booking-button {
+    background: #171717 !important;
+    background-image: none !important;
+    color: #fff !important;
+    border-color: #171717 !important;
+    animation: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+}
+.hero-booking-button::before,
+.hero-booking-button::after {
+    animation: none !important;
+    opacity: 0 !important;
+    content: none !important;
+}
+.hero-booking-button.is-pressed {
+    animation: none !important;
+    background: #d63384 !important;
+    background-image: none !important;
+    border-color: #d63384 !important;
+    color: #fff !important;
+}
+.hero-booking-button:hover,
+.hero-booking-button:focus-visible {
+    background: #986774 !important;
+    background-image: none !important;
+    border-color: #986774 !important;
+    color: #fff !important;
+}
+.hero-booking-button:active {
+    background: #d63384 !important;
+    background-image: none !important;
+    border-color: #d63384 !important;
+    color: #fff !important;
+    transform: scale(1.045);
+}
