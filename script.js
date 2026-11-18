@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Procesa la solicitud directamente desde el toque, sin depender de la
     // validación automática del navegador ni de un campo de hora específico.
     submitButton.addEventListener("click", () => {
+        alert("El botón sí está ejecutando el código. Ahora revisaré la apertura de WhatsApp.");
         const nameInput = appointmentForm.elements.namedItem("name");
         const phoneInput = appointmentForm.elements.namedItem("phone");
         const shiftInput = appointmentForm.querySelector('input[name="shift"]:checked');
