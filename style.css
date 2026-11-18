@@ -455,7 +455,6 @@ body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
     background: var(--black); color: var(--ivory); font-size: .78rem; font-weight: 600;
     transition: transform .2s ease, background .2s ease;
 }
-.hero-booking-button span { color: var(--pink); font-size: 1rem; }
 .hero-booking-button:hover { background: var(--rose-dark); transform: translateY(-2px); }
 .booking-intro {
     max-width: 760px; margin: 0 auto 72px; padding: 34px 24px;
@@ -532,7 +531,6 @@ body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .shift-options input:checked + span { border-color: var(--rose-dark); background: var(--pink-light); color: var(--rose-dark); font-weight: 700; }
 .booking-note { color: var(--gray); font-size: .68rem; line-height: 1.55; }
 .booking-submit { min-height: 48px; display: flex; justify-content: center; align-items: center; gap: 13px; border: 0; border-radius: 3px; background: var(--black); color: white; font-size: .78rem; font-weight: 600; cursor: pointer; }
-.booking-submit span { color: var(--pink); }
 body.booking-open { overflow: hidden; }
 @media (max-width: 560px) {
     .hero-booking-button { margin-top: 20px; padding: 12px 18px; }
