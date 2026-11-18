@@ -204,13 +204,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // Cierra el menú de categorías al elegir una sección y corrige el acceso a Inicio.
-    document.querySelectorAll(".nav-dropdown-menu a[href^='#']").forEach(link => {
+    // Mantiene marcada la categoría elegida y cierra el desplegable al navegar.
+    const categoryLinks = [...document.querySelectorAll(".nav-dropdown-menu a[href^='#']")];
+    const markCurrentCategory = hash => {
+        categoryLinks.forEach(link => link.classList.toggle("is-current", link.getAttribute("href") === hash));
+    };
+    categoryLinks.forEach(link => {
         link.addEventListener("click", () => {
+            markCurrentCategory(link.getAttribute("href"));
             const dropdown = link.closest(".nav-dropdown");
             if (dropdown) dropdown.removeAttribute("open");
         });
     });
+    markCurrentCategory(window.location.hash);
+    window.addEventListener("hashchange", () => markCurrentCategory(window.location.hash));
+
+    // Corrige el acceso a Inicio.
 
     document.querySelectorAll("a[href='#inicio']").forEach(link => {
         link.addEventListener("click", event => {
