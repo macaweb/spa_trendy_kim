@@ -167,9 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const serviceLines = [];
         groupedServices.forEach((items, category) => {
             serviceLines.push("*" + category.toLocaleUpperCase("es-CO") + "*");
-            items.forEach((item, index) => {
-                serviceLines.push((index + 1) + ". " + item.name);
-                serviceLines.push("   Precio: " + item.priceText);
+            items.forEach(item => {
+                serviceLines.push(item.name);
+                serviceLines.push("Precio: " + item.priceText);
             });
             serviceLines.push("");
         });
