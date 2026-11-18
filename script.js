@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </fieldset>
                 <label>Elige la fecha de tu cita<input name="date" type="date" required></label>
                 <p class="booking-note">Tu solicitud se enviará por WhatsApp. La cita quedará pendiente de confirmación.</p>
-                <input type="hidden" name="whatsapp_message" value=""><button class="booking-submit" type="submit">Solicitar mi cita</button>
+                <input type="hidden" name="text" value=""><button class="booking-submit" type="submit">Solicitar mi cita</button>
             </form>
         </section>`;
     document.body.appendChild(panel);
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", event => { if (event.key === "Escape" && panel.classList.contains("is-open")) closePanel(); });
 
     const appointmentForm = panel.querySelector(".appointment-form");
-    const whatsappMessageInput = appointmentForm.querySelector('input[name="whatsapp_message"]');
+    const whatsappMessageInput = appointmentForm.querySelector('input[name="text"]');
     appointmentForm.action = "https://wa.me/573172326970";
     appointmentForm.method = "get";
 
