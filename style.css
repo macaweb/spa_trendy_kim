@@ -846,3 +846,66 @@ body.booking-open { overflow: hidden; }
     .nav-dropdown-menu a, .hero-booking-button, .booking-browse-button,
     .booking-submit, .button, .contacto-link { transition: none !important; }
 }
+
+
+/* Acceso a ubicación y redes desde el bloque Visítanos */
+.contacto-visitanos {
+    max-width: 570px;
+    margin: 22px auto 0;
+    padding: 7px 16px 13px;
+    border-top: 1px solid rgba(216,198,181,.8);
+}
+.contacto-visitanos .contacto-direccion {
+    max-width: none;
+    margin: 0;
+    padding: 12px 0 9px;
+    border: 0;
+    justify-content: flex-start;
+}
+.contacto-direccion .direccion-pin {
+    flex: 0 0 auto;
+    color: var(--rose-dark);
+    font-size: 1.25rem;
+}
+.visitanos-redes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+    padding-top: 7px;
+}
+.visitanos-redes a {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(185,133,145,.28);
+    border-radius: 50%;
+    background: #fffdf8;
+    color: var(--rose-dark);
+    transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.visitanos-redes svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.visitanos-redes a:nth-child(2) svg { fill: currentColor; stroke: none; }
+.visitanos-redes a:hover,
+.visitanos-redes a:focus-visible {
+    transform: translateY(-2px);
+    background: var(--pink-light);
+    border-color: var(--rose);
+    color: #B51F72;
+    outline: none;
+}
+.visitanos-redes a:active { transform: scale(.94); }
+@media (max-width: 560px) {
+    .contacto-visitanos { margin-top: 19px; padding: 7px 4px 12px; }
+    .contacto-visitanos .contacto-direccion { align-items: center; padding: 12px 0 9px; }
+}
