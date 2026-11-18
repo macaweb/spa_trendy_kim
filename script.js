@@ -226,8 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!groupedServices.has(item.title)) groupedServices.set(item.title, []);
             groupedServices.get(item.title).push(item);
         });
-        // WhatsApp aplica negrita al texto encerrado entre asteriscos.
-        const boldHeading = value => `*${value}*`;
+        // Encabezados en texto limpio, sin asteriscos ni caracteres Unicode especiales.
+        const boldHeading = value => value;
 
         const serviceLines = [];
         groupedServices.forEach((items, category) => {
