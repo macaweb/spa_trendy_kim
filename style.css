@@ -2220,3 +2220,114 @@ a[href]:active,
     color: #fff !important;
     transform: scale(1.045);
 }
+
+
+/* Movimiento sutil en todo el sitio: tipografía, tarjetas, fotos y bloques */
+.section-heading h2,
+.category-section-heading h2,
+.hair-section-heading h2,
+.garantia-heading h2,
+.titulo-grupo h3,
+.contacto-section h2 {
+    transition: color .3s ease, letter-spacing .35s ease, transform .35s ease;
+}
+.section-heading:hover h2,
+.category-section-heading:hover h2,
+.hair-section-heading:hover h2,
+.garantia-heading:hover h2 {
+    letter-spacing: -.035em;
+    transform: translateY(-2px);
+}
+.titulo-grupo .numero-grupo {
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), background .3s ease, color .3s ease;
+}
+.grupo-servicios:hover .numero-grupo {
+    transform: rotate(8deg) scale(1.07);
+    background: var(--pink-light);
+}
+.lista-servicios {
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.grupo-servicios:hover .lista-servicios {
+    transform: translateY(-2px);
+    border-color: rgba(185,133,145,.55);
+    box-shadow: 0 15px 34px rgba(50,36,37,.065);
+}
+.servicio-item {
+    transition: background-color .25s ease, padding .25s ease, color .25s ease;
+}
+.servicio-item:hover {
+    padding-left: 7px;
+    padding-right: 5px;
+    background: rgba(248,237,239,.58);
+}
+.service-photo-placeholder img,
+.hero-photo-wrap img,
+.contacto-pie-foto img {
+    transition: transform .75s cubic-bezier(.2,.7,.2,1), filter .55s ease;
+    will-change: transform;
+}
+.service-photo-placeholder:hover img,
+.hero-photo-wrap:hover img,
+.contacto-pie-foto:hover img {
+    transform: scale(1.035);
+}
+.garantia-card {
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease;
+}
+.garantia-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 48px rgba(50,36,37,.09);
+}
+.garantia-icon {
+    display: inline-block;
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.garantia-card:hover .garantia-icon {
+    transform: translateY(-3px) rotate(-6deg) scale(1.08);
+}
+.contacto-link,
+.contacto-direccion-pie,
+.footer-brand {
+    transition: transform .25s ease, color .25s ease;
+}
+.contacto-link:hover,
+.contacto-direccion-pie:hover {
+    transform: translateX(4px);
+}
+.footer-brand:hover {
+    transform: translateY(-2px);
+}
+.catalog-footer p em {
+    display: inline-block;
+    transition: transform .35s ease, color .35s ease;
+}
+.catalog-footer:hover p em {
+    transform: translateY(-3px);
+    color: var(--rose-dark);
+}
+
+/* Las animaciones no deben interferir con formularios ni con la lectura */
+@media (prefers-reduced-motion: reduce) {
+    .section-heading h2,
+    .category-section-heading h2,
+    .hair-section-heading h2,
+    .garantia-heading h2,
+    .titulo-grupo h3,
+    .contacto-section h2,
+    .titulo-grupo .numero-grupo,
+    .lista-servicios,
+    .servicio-item,
+    .service-photo-placeholder img,
+    .hero-photo-wrap img,
+    .contacto-pie-foto img,
+    .garantia-card,
+    .garantia-icon,
+    .contacto-link,
+    .contacto-direccion-pie,
+    .footer-brand,
+    .catalog-footer p em {
+        transition: none !important;
+        transform: none !important;
+    }
+}
