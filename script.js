@@ -329,7 +329,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Aparición progresiva de secciones al desplazarse por la página.
     const motionTargets = document.querySelectorAll(
-        ".intro-strip, .booking-intro, .section-heading, .category-section-heading, .grupo-servicios, .garantia-section, .contacto-section, .catalog-footer"
+        ".intro-strip, .booking-intro, .section-heading, .category-section-heading, .grupo-servicios, " +
+        ".titulo-grupo, .lista-servicios, .service-photo-placeholder, .garantia-heading, .garantia-card, " +
+        ".contacto-section, .contacto-pie-foto, .contacto-redes-pie, .catalog-footer, .hero-signature, .photo-caption"
     );
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -344,9 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
         motionTargets.forEach((element, index) => {
             element.classList.add("reveal-on-scroll");
-            if (element.classList.contains("grupo-servicios")) {
-                element.style.setProperty("--reveal-delay", (index % 2) * 90 + "ms");
-            }
+            element.style.setProperty("--reveal-delay", Math.min(index % 5, 4) * 65 + "ms");
             revealObserver.observe(element);
         });
     }
